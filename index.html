@@ -1,35 +1,45 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="description" content="Fall 2020 Software Engineering Group 2 Project. Using a Geospatial Data Warehouse to gather and analyze data from various sources.">
-        <meta name=viewport content="width=device-width, initial-scale=1">
-        <title>SE - Group 2</title>
-        <link rel="stylesheet" href="resetstyle.css">
-        <link rel="stylesheet" href="style.css">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIA</title>
+    <link rel="stylesheet" href="style.css">
 
-        <!-- Leaflet Files -->
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-        crossorigin=""/>
-        <!-- Make sure you put this AFTER Leaflet's CSS -->
-        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-        crossorigin=""></script>
-        <!-- End Leaflet Files -->
+    <!-- Leaflet Files -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+</head>
 
-    </head>
-    <body>
-        <header>
-            <h1>Hello World</h1>
-        </header>
-        <main>
-            <div id="mapid"></div>
-        </main>
-        <footer>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li class="logo"><a href="index.html">Covid 19 NJ Logo</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Layers</a>
+                    <ul>
+                        <li><a href="#"></a>Covid-19</li>
+                        <li><a href="#"></a>Median Income</li>
+                        <li><a href="#"></a>Covid-19 and Median Income</li>
+                    </ul>
+                </li>
+                <!-- <li><a href="pages/contact.html">Contact</a></li> -->
+            </ul>
+        </nav>
+    </header>
 
-        </footer>
-        <script src=NJ_Counties.js></script>
-        <script src=main.js></script>
-    </body>
+    <section class="features" id="mapid">
+    </section>
+
+    <footer>footer</footer>
+    <!-- <script src="leaflet/data.js"></script> -->
+    <script src="NJ_Counties.js"></script>
+    <script src="main.js"></script>
+</body>
 </html>
