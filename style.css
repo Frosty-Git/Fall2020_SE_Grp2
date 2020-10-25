@@ -54,6 +54,18 @@ nav ul li{
     position: relative;
 }
 
+aside {
+    height: 20vh;
+    width: 35vh;
+    background-color: cornflowerblue;
+}
+
+.timeControls {
+    height: 15vh;
+    width: 25vh;
+    background-color: darkred;
+}
+
 #mapid {
     height: 90vh;
 }
