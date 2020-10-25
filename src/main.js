@@ -33,6 +33,7 @@ var overlayMaps = {
     "Income": income
 };
 
-/* Create Leaflet Map Controls */
+/* Leaflet Layer Controls */
 L.control.layers(overlayMaps,null).addTo(mymap);
+/* Leaflet Scale Bar */
 L.control.scale().addTo(mymap);

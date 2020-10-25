@@ -11,7 +11,7 @@ function pressPlay() {
 
     const sleepNow = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
 
-    async function repeatedGreetingsLoop() {
+    async function delay() {
         for (current_day; paused == false && current_day < DATA_LENGTH; current_day++) {
             await sleepNow(1000)
             console.log(current_day);
@@ -19,23 +19,21 @@ function pressPlay() {
         }
     }
 
-    repeatedGreetingsLoop()
+    delay()
 }
 
 function pressPause() {
     paused = true;
-    //current_day--;
     console.log(current_day);
-    //covid.resetStyle();
 }
 
 function pressStop() {
-    //current_day = 0;
-    paused = true;
-    //covid.resetStyle();
+    pressPause();
+    resetDay();
+    console.log(current_day);
+    covid.resetStyle();
 }
 
-
-
-
-/* Hello */
+async function resetDay() {
+    current_day = 0;
+}
