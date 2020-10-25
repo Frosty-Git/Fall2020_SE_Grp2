@@ -54,42 +54,16 @@ nav ul li{
     position: relative;
 }
 
-nav ul li ul{
-    display: block;
-    position: absolute;
-    background-color: black;
-    padding: 10px;
-    text-size-adjust: 10px;
-    border-radius: 0px 0px 4px 4px;
-}
-
-nav ul li :hover ul {
-    display: block;
-}
-
-nav ul li ul li{
-    width: 180px;
-    border-radius: 5px;
-}
-
-nav ul li ul li a{
-    padding: 8px 12px;
-}
-
-nav ul li ul li a :hover{
-    background-color: lightgray;
-}
-
 #mapid {
-    height: 800px;
+    height: 90vh;
 }
 
 
 /* FOOTER */
-footer{
+/*footer{
     background: black;
     color: gray;
     font-size: 12px;
     padding: 20px 20px;
     text-align: center;
-}
+}*/
