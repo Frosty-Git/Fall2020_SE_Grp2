@@ -1,3 +1,7 @@
+/**
+ * Dumby Data for testing purposes.
+ */
+
 var NJ_Counties = {
     "type": "FeatureCollection",
     "name": "NJ_Counties_Data",
