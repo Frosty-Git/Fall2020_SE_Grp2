@@ -84,30 +84,6 @@ nav ul li ul li a :hover{
     height: 800px;
 }
 
-/* FEATURES */
-.features{
-    background-color: white;
-    color: black;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap; 
-    height: 800px;  
-}
-
-.features figure{
-    margin: auto;
-    padding: 5px;
-    text-align: center;
-    text-transform: uppercase;
-    width: 200px;
-}
-
-.features figure img{
-    border: 1px solid white;
-    border-radius: 50%;
-    box-shadow: gray 0 0 10px;
-    width: 200px;
-}
 
 /* FOOTER */
 footer{
