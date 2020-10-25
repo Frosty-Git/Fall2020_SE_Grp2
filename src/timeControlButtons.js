@@ -30,7 +30,12 @@ function pressPause() {
 }
 
 function pressStop() {
-    current_day = 0;
+    //current_day = 0;
     paused = true;
     //covid.resetStyle();
 }
+
+
+
+
+/* Hello */
