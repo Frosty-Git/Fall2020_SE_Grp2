@@ -1,10 +1,14 @@
+/**
+ * Style functions for Leaflet Data Layers.
+ */
+
 function getCovidColor(a) {
-    return a > 10000 ? '#b31010' :
-           a > 5000  ? '#b34410' :
-           a > 1000  ? '#e39f17' :
-           a > 800  ? '#e3e017' :
-           a > 500   ? '#074004' :
-           a > 100   ? '#378532' :
+    return a > 20 ? '#b31010' :
+           a > 15  ? '#b34410' :
+           a > 10  ? '#e39f17' :
+           a > 7  ? '#e3e017' :
+           a > 4   ? '#074004' :
+           a > 1   ? '#378532' :
            a > 0   ? '#bafab6' :
                       '#FFEDA0';
 }
