@@ -1,7 +1,5 @@
 /* Map Script */
 
-var current_day = 0;
-
 var covid = L.geoJson(NJ_Counties, {style: styleCovid});
 var income = L.geoJson(NJ_Counties, {style: styleIncome});
 
