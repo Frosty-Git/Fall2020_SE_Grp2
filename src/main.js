@@ -5,6 +5,7 @@
 var current_day = 0;
 var covid = L.geoJson(NJ_Counties_Simple, {style: styleCovid});
 var income = L.geoJson(NJ_Counties_Simple, {style: styleIncome});
+const DATA_LENGTH = NJ_Counties_Simple.features[0].properties.Covid_Cases.length;
 
 /* Creates Leaflet Map */
 var osm = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {

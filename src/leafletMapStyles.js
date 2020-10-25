@@ -14,10 +14,10 @@ function getCovidColor(a) {
 }
 
 function getIncomeColor(a) {
-    return a > 100000 ? '#003300' :
-           a > 80000  ? '#006633' :
-           a > 50000  ? '#339933' :
-           a > 30000   ? '#00ff33' :
+    return a > 10 ? '#003300' :
+           a > 8  ? '#006633' :
+           a > 5  ? '#339933' :
+           a > 3   ? '#00ff33' :
            a > 0   ? '#99ff99' :
                       '#FFEDA0';
 }
