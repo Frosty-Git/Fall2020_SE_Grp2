@@ -70,7 +70,7 @@ nav li{
     display: block;
     width: 20px;
     height: 4px;
-    background: #b8b8b8;
+    background: #000000;
     margin: 0px 0px 5px 0px;
     cursor: pointer;
 }
@@ -83,6 +83,7 @@ nav li{
 .states{
     font-size: small;
     margin: 10px;
+    color: #000000;
 }
 
 /* FOOTER */
