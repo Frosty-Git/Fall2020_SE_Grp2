@@ -84,6 +84,8 @@ nav li{
     font-size: small;
     margin: 10px;
     color: #000000;
+    list-style: none;
+    cursor: pointer;
 }
 
 /* FOOTER */
