@@ -24,8 +24,16 @@
            <li class="logo"><a href="index.html">Covid 19 NJ Logo</a></li>
         </nav>
     </header>
+
     <div id="mapid" ></div>
-    <aside>
+
+    <aside id ="sidebar">
+        <div class="toggleBtn" onclick="toggleSidebar(this)">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
         <div class="timeControls">
             <ul>
                 <button class="btn-play" onclick="pressPlay()">play</button>
@@ -36,60 +44,58 @@
 
         <div class="states">
             <ul>
-                <ul>
-                    <li>Alabama</li>
-                    <li>Alaska</li>
-                    <li>Arkansas</li>
-                    <li>Arizona</li>
-                    <li>California</li>
-                    <li>Colorado</li>
-                    <li>Connecticut</li>
-                    <li>District of Columbia</li>
-                    <li>Delaware</li>
-                    <li>Florida</li>
-                    <li>Georgia</li>
-                    <li>Hawaii</li>
-                    <li>Idaho</li>
-                    <li>Illinois</li>
-                    <li>Indiana</li>
-                    <li>Iowa</li>
-                    <li>Kansas</li>
-                    <li>Kentucky</li>
-                    <li>Louisiana</li>
-                    <li>Maine</li>
-                    <li>Maryland</li>
-                    <li>Massachusetts</li>
-                    <li>Michigan</li>
-                    <li>Minnesota</li>
-                    <li>Mississippi</li>
-                    <li>Missouri</li>
-                    <li>Montana</li>
-                    <li>Nebraska</li>
-                    <li>Nevada</li>
-                    <li>New Hampshire</li>
-                    <li>New Jersey</li>
-                    <li>New Mexico</li>
-                    <li>New York</li>
-                    <li>North Carolina</li>
-                    <li>North Dakota</li>
-                    <li>Ohio</li>
-                    <li>Oklahoma</li>
-                    <li>Oregon</li>
-                    <li>Pennsylvania</li>
-                    <li>Rhode Island</li>
-                    <li>South Carolina</li>
-                    <li>South Dakota</li>
-                    <li>Tennessee</li>
-                    <li>Texas</li>
-                    <li>Utah</li>
-                    <li>Vermont</li>
-                    <li>Virginia</li>
-                    <li>Vermont</li>
-                    <li>Washington</li>
-                    <li>West Virginia</li>
-                    <li>Wisconsin</li>
-                    <li>Wyoming</li>        
-                </ul>
+                <li>Alabama</li>
+                <li>Alaska</li>
+                <li>Arkansas</li>
+                <li>Arizona</li>
+                <li>California</li>
+                <li>Colorado</li>
+                <li>Connecticut</li>
+                <li>District of Columbia</li>
+                <li>Delaware</li>
+                <li>Florida</li>
+                <li>Georgia</li>
+                <li>Hawaii</li>
+                <li>Idaho</li>
+                <li>Illinois</li>
+                <li>Indiana</li>
+                <li>Iowa</li>
+                <li>Kansas</li>
+                <li>Kentucky</li>
+                <li>Louisiana</li>
+                <li>Maine</li>
+                <li>Maryland</li>
+                <li>Massachusetts</li>
+                <li>Michigan</li>
+                <li>Minnesota</li>
+                <li>Mississippi</li>
+                <li>Missouri</li>
+                <li>Montana</li>
+                <li>Nebraska</li>
+                <li>Nevada</li>
+                <li>New Hampshire</li>
+                <li>New Jersey</li>
+                <li>New Mexico</li>
+                <li>New York</li>
+                <li>North Carolina</li>
+                <li>North Dakota</li>
+                <li>Ohio</li>
+                <li>Oklahoma</li>
+                <li>Oregon</li>
+                <li>Pennsylvania</li>
+                <li>Rhode Island</li>
+                <li>South Carolina</li>
+                <li>South Dakota</li>
+                <li>Tennessee</li>
+                <li>Texas</li>
+                <li>Utah</li>
+                <li>Vermont</li>
+                <li>Virginia</li>
+                <li>Vermont</li>
+                <li>Washington</li>
+                <li>West Virginia</li>
+                <li>Wisconsin</li>
+                <li>Wyoming</li>  
             </ul>
         </div>
     </aside>
@@ -108,5 +114,6 @@
     <script src="src/leafletMapStyles.js"></script>
     <script src="src/main.js"></script>
     <script src="src/timeControlButtons.js"></script>
+    <script src="src/sidebarControls.js"></script>
 </body>
 </html>

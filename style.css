@@ -46,7 +46,7 @@ nav li{
     position: relative;
 }
 
-aside {
+#sidebar {
     background-color: lightgray;
     width: 150px;
     height: 90vh;
@@ -55,7 +55,22 @@ aside {
     left: 0px;
     z-index: 2000;
 }
+#sidebar.active{
+    left: 0px;
+}
 
+#sidebar .toggleBtn {
+    position: absolute;
+    left: 149px;
+    top: 1px;
+}
+
+#sidebar .toggleBtn span{
+    display: block;
+    width: 30px;
+    height: 5px;
+    background: #151719;
+}
 .timeControls {
     height: 2vh;
     width: 25vh;
