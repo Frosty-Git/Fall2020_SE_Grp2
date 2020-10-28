@@ -38,9 +38,18 @@ async function resetDay() {
     current_day = 0;
 }
 
-function zoomToState(stateName) {
-    stateObject = State_Centroids.features[1]
+function resetZoom() {
+    mymap.setView([39.056882, -98.407468], 5);
+}
+
+function zoomToState(stateIndex) {
+    stateObject = State_Centroids.features[stateIndex]
     longitude = stateObject.properties.long
     latitude = stateObject.properties.lat
     mymap.setView([latitude, longitude], 7);
+}
+
+function setCurrentState(stateName) {
+    current_state = stateName
+    console.log(current_state)
 }
