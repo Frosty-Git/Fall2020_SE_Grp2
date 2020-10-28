@@ -37,3 +37,8 @@ function pressStop() {
 async function resetDay() {
     current_day = 0;
 }
+
+var centroids = State_Centroids.js
+function zoomToState(stateName) {
+    state = feature.properties.
+}
