@@ -38,7 +38,9 @@ async function resetDay() {
     current_day = 0;
 }
 
-var centroids = State_Centroids.js
 function zoomToState(stateName) {
-    state = feature.properties.
+    stateObject = State_Centroids.features[1]
+    longitude = stateObject.properties.long
+    latitude = stateObject.properties.lat
+    mymap.setView([latitude, longitude], 7);
 }
