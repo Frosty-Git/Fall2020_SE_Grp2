@@ -43,13 +43,12 @@ function resetZoom() {
 }
 
 function zoomToState(stateIndex) {
-    stateObject = State_Centroids.features[stateIndex]
-    longitude = stateObject.properties.long
-    latitude = stateObject.properties.lat
+    stateObject = State_Centroids.features[stateIndex];
+    longitude = stateObject.properties.long;
+    latitude = stateObject.properties.lat;
     mymap.setView([latitude, longitude], 7);
 }
 
 function setCurrentState(stateName) {
-    current_state = stateName
-    console.log(current_state)
+    current_state = stateName;
 }
