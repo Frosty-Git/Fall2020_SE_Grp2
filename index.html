@@ -27,13 +27,13 @@
 
     <div id="mapid" ></div> <!--Leaflet Map-->
 
+    <div class="toggleBtn" onclick="toggleSidebar(this)">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
     <aside id ="sidebar">
-        <div class="toggleBtn" onclick="toggleSidebar(this)">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-
+        <!--Buttons to control the data-->
         <div class="timeControls">
             <ul>
                 <button class="btn-play" onclick="pressPlay()">play</button>
@@ -42,6 +42,7 @@
             </ul>
         </div>
 
+        <!--List of States-->
         <div class="states">
             <ul>
                 <li onclick="">Alabama</li>
