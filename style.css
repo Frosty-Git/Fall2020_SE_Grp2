@@ -31,14 +31,14 @@ header .logo a{
     background-size: 100px;
     display: inline-block;
     height: 80px;
-    left: -320px;
+    left: -480px;
     position: relative;
     text-indent: -9999999px;
     top: -14px;
     width: 300px;
 }
 
-nav li{
+li{
     list-style-type: none;
 }
 #mapid {

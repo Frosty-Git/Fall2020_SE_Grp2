@@ -9,8 +9,6 @@ var income = L.geoJson(NJ_Counties_Simple, {style: styleIncome});
 const DATA_LENGTH = NJ_Counties_Simple.features[0].properties.Covid_Cases.length;
 /* Centroids */
 
-
-
 /* Creates Leaflet Map */
 var osm = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -25,7 +23,8 @@ var osm = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?a
 
 var mymap = L.map('mapid', {
     maxBounds: L.latLngBounds(L.latLng(73.65, -180.00), L.latLng(10.50, -50.11)),
-    layers: [covid]
+    layers: [covid],
+    zoomControl: false
     }).setView([39.056882, -98.407468], 5);
 
 osm.addTo(mymap);
@@ -39,5 +38,7 @@ var overlayMaps = {
 
 /* Leaflet Layer Controls */
 L.control.layers(overlayMaps,null).addTo(mymap);
+/* Leaflet Zoom Control */
+L.control.zoom({position: 'topright'}).addTo(mymap);
 /* Leaflet Scale Bar */
-L.control.scale().addTo(mymap);
+L.control.scale({position: 'topright'}).addTo(mymap);
