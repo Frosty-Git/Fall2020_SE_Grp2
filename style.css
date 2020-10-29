@@ -84,7 +84,7 @@ li{
 }
 
 .states{
-    font-size: small;
+    font-size: 7pt;
     margin: 10px;
     color: #000000;
     list-style: none;
@@ -99,3 +99,15 @@ li{
     padding: 20px 20px;
     text-align: center;
 }*/
+
+#statisticsBlock {
+    background-color: rgb(244, 245, 181);
+    width: 300px;
+    height: 200px;
+    position: absolute;
+    top: 500px;
+    left: 1200px;
+    z-index: 2000;
+    transition: all 300ms linear;
+    color: black;
+}
