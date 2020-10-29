@@ -56,6 +56,7 @@ li{
     z-index: 2000;
     transition: all 300ms linear;
     overflow: auto;
+    overflow-x: hidden;
 }
 #sidebar.active{
     left: 0px;
