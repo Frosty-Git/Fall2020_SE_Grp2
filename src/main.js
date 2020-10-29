@@ -4,9 +4,10 @@
 
 /* Global Variables */
 var current_day = 0;
-var covid = L.geoJson(Multiple_States_Simple.js, {style: styleCovid});
-var income = L.geoJson(Multiple_States_Simple.js, {style: styleIncome});
-const DATA_LENGTH = NJ_Counties_Simple.features[0].properties.Covid_Cases.length;
+var geoJson = Multiple_States_Simple;
+var covid = L.geoJson(geoJson, {style: styleCovid});
+var income = L.geoJson(geoJson, {style: styleIncome});
+const DATA_LENGTH = geoJson.features[0].properties.Covid_Cases.length;
 var current_state = 'USA';
 /* Centroids */
 

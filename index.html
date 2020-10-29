@@ -47,7 +47,7 @@
                 <!--These buttons control the zoom level and where 
                     the map is focused. Also, switched the selected
                     state for the statistics box. -->
-                <li onclick="resetZoom(); setCurrentState('USA')">USA</li>
+                <li onclick="resetUSA()">USA</li>
                 <li onclick="zoomToState(0,7); setCurrentState('Alabama')">Alabama</li>
                 <li onclick="zoomToState(1,7); setCurrentState('Alaska')">Alaska</li>
                 <li onclick="zoomToState(2,7); setCurrentState('Arizona')">Arizona</li>
@@ -107,8 +107,8 @@
         <div id="statisticsBlock">
             <ul><h2>Statistic</h2></ul>
             <ul><h3 class="statCurrentState">USA</h3></ul>
-            <ul>Total Covid Cases</ul>
-            <ul>Median Income</ul>
+            <ul><div>Total Covid Cases: </div><div class="statTotalCovid"></div></ul>
+            <ul><div>Average Median Income: </div><div class="statIncome"></div></ul>
             <ul>Mean</ul>
             <ul>Correlation</ul>
         </div>
@@ -124,6 +124,7 @@
     <script src="src/State_Centroids.js"></script>
     <script src="src/leafletMapStyles.js"></script>
     <script src="src/main.js"></script>
+    <script src="src/analysis.js"></script>
     <script src="src/timeControlButtons.js"></script>
     <script src="src/sidebarControls.js"></script>
 </body>

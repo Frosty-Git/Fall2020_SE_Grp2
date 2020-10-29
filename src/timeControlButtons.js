@@ -56,8 +56,10 @@ async function resetDay() {
  * Resets the view to the default view and position.
  * Centered on the contiguous USA.
  */
-function resetZoom() {
+function resetUSA() {
     mymap.setView([39.056882, -98.407468], 5);
+    current_state = 'USA';
+    setStatCurrentState();
 }
 
 /**
@@ -83,10 +85,20 @@ function zoomToState(stateIndex, zoomLevel) {
 function setCurrentState(stateName) {
     current_state = stateName;
     setStatCurrentState();
+    var total = getSingleCovid();
+    var income = getStateAvgMedIncome();
+    setStatTotalCovid(total);
+    setStatIncome(income);
 }
 
 function setStatCurrentState() {
-    var text = document.querySelector(".statCurrentState");
-    console.log(text)
     document.querySelector(".statCurrentState").innerHTML = current_state;
+}
+
+function setStatTotalCovid(total) {
+    document.querySelector(".statTotalCovid").innerHTML = total;
+}
+
+function setStatIncome(income) {
+    document.querySelector(".statIncome").innerHTML = income;
 }
