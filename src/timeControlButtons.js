@@ -82,4 +82,11 @@ function zoomToState(stateIndex, zoomLevel) {
  */
 function setCurrentState(stateName) {
     current_state = stateName;
+    setStatCurrentState();
+}
+
+function setStatCurrentState() {
+    var text = document.querySelector(".statCurrentState");
+    console.log(text)
+    document.querySelector(".statCurrentState").innerHTML = current_state;
 }
