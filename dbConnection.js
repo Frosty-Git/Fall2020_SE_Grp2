@@ -12,7 +12,7 @@ class DbConnection {
         const client = new Client({
             user: "postgres",
             password: "BadBiffBad0809!",
-            host: "3.89.180.185",
+            host: "3.80.98.188",
             post: 5432,
             database: "nj_cia"
         })  
