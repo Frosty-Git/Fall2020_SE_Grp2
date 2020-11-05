@@ -2,8 +2,6 @@
  * JS code to control the function of the HTML buttons.
  */
 
-var paused = false;
-
 /**
  * The play button's function. Makes the Covid data start moving
  * forward in time starting with the current day.
@@ -101,4 +99,8 @@ function setStatTotalCovid(total) {
 
 function setStatIncome(income) {
     document.querySelector(".statIncome").innerHTML = income;
+}
+
+function toggleSidebar(ref){
+    document.getElementById("sidebar").classList.toggle('active');
 }
