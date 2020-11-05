@@ -8,14 +8,14 @@ class Map {
 
     async setup() {
         
-        // console.log('Fetching data');
+        console.log('Fetching data');
 
-        // const response = await fetch(url);
-        // const geoJson = await response.json();
+        const response = await fetch(url);
+        const geoJson = await response.json();
 
-        // console.log('Displaying data');
+        console.log('Displaying data');
 
-        const geoJson = Multiple_States_Simple;
+        // const geoJson = Multiple_States_Simple;
 
         var covid = L.geoJson(geoJson, {style: styleCovid});
         var income = L.geoJson(geoJson, {style: styleIncome});
