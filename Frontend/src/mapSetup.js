@@ -11,15 +11,15 @@ class Map {
         console.log('Fetching data');
 
         const response = await fetch(url);
-        const geoJson = await response.json();
+        geoJson = await response.json();
 
         console.log('Displaying data');
 
         // const geoJson = Multiple_States_Simple;
 
-        var covid = L.geoJson(geoJson, {style: styleCovid});
-        var income = L.geoJson(geoJson, {style: styleIncome});
-        const DATA_LENGTH = geoJson.features[0].properties.Covid_Cases.length;
+        covid = L.geoJson(geoJson, {style: styleCovid});
+        income = L.geoJson(geoJson, {style: styleIncome});
+        DATA_LENGTH = geoJson.features[0].properties.Covid_Cases.length;
 
         /* Creates Leaflet Map */
         var osm = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
