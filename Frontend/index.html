@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIA</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Leaflet Files -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+    <!-- End Leaflet Imports -->
+
+</head>
+
+<body>
+    <header>
+        <nav>
+           <li class="logo"><a href="index.html">Covid 19 NJ Logo</a></li>
+        </nav>
+    </header>
+
+    <div id="mapid" ></div> <!--Leaflet Map-->
+
+    <div class="toggleBtn" onclick="toggleSidebar(this)">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <aside id ="sidebar">
+        <!--Buttons to control the data-->
+        <div class="timeControls">
+            <ul>
+                <button class="btn-play" onclick="pressPlay()">play</button>
+                <button class="btn-pause" onclick="pressPause()">pause</button>
+                <button class="btn-stop" onclick="pressStop()" >stop</button>
+                <!--Testing Connection to Node Server-->
+                <button class="ServerConnectTest" onclick="pressTest()">Test</button>
+                <div class="test">7</div>
+                <script>
+                    function pressTest() {
+                        date++;
+                        document.querySelector(".test").innerHTML = date;
+                    }
+                </script>
+                <!--End Testing Connection to Node Server-->
+            </ul>
+        </div>
+
+        <!--List of States-->
+        <div class="states">
+            <ul>
+                <!--These buttons control the zoom level and where 
+                    the map is focused. Also, switched the selected
+                    state for the statistics box. -->
+                <li onclick="resetUSA()">USA</li>
+                <li onclick="zoomToState(0,7); setCurrentState('Alabama')">Alabama</li>
+                <li onclick="zoomToState(1,7); setCurrentState('Alaska')">Alaska</li>
+                <li onclick="zoomToState(2,7); setCurrentState('Arizona')">Arizona</li>
+                <li onclick="zoomToState(3,7); setCurrentState('Arkansas')">Arkansas</li>
+                <li onclick="zoomToState(4,7); setCurrentState('California')">California</li>
+                <li onclick="zoomToState(5,7); setCurrentState('Colorado')">Colorado</li>
+                <li onclick="zoomToState(6,7); setCurrentState('Connecticut')">Connecticut</li>
+                <li onclick="zoomToState(7,7); setCurrentState('District of Columbia')">District of Columbia</li>
+                <li onclick="zoomToState(8,7); setCurrentState('Delaware')">Delaware</li>
+                <li onclick="zoomToState(9,7); setCurrentState('Florida')">Florida</li>
+                <li onclick="zoomToState(10,7); setCurrentState('Georgia')">Georgia</li>
+                <li onclick="zoomToState(11,7); setCurrentState('Hawaii')">Hawaii</li>
+                <li onclick="zoomToState(12,7); setCurrentState('Idaho')">Idaho</li>
+                <li onclick="zoomToState(13,7); setCurrentState('Illinois')">Illinois</li>
+                <li onclick="zoomToState(14,7); setCurrentState('Indiana')">Indiana</li>
+                <li onclick="zoomToState(15,7); setCurrentState('Iowa')">Iowa</li>
+                <li onclick="zoomToState(16,7); setCurrentState('Kansas')">Kansas</li>
+                <li onclick="zoomToState(17,7); setCurrentState('Kentucky')">Kentucky</li>
+                <li onclick="zoomToState(18,7); setCurrentState('Louisiana')">Louisiana</li>
+                <li onclick="zoomToState(19,7); setCurrentState('Maine')">Maine</li>
+                <li onclick="zoomToState(20,7); setCurrentState('Maryland')">Maryland</li>
+                <li onclick="zoomToState(21,7); setCurrentState('Massachusetts')">Massachusetts</li>
+                <li onclick="zoomToState(22,7); setCurrentState('Michigan')">Michigan</li>
+                <li onclick="zoomToState(23,7); setCurrentState('Minnesota')">Minnesota</li>
+                <li onclick="zoomToState(24,7); setCurrentState('Mississippi')">Mississippi</li>
+                <li onclick="zoomToState(25,7); setCurrentState('Missouri')">Missouri</li>
+                <li onclick="zoomToState(26,7); setCurrentState('Montana')">Montana</li>
+                <li onclick="zoomToState(27,7); setCurrentState('Nebraska')">Nebraska</li>
+                <li onclick="zoomToState(28,7); setCurrentState('Nevada')">Nevada</li>
+                <li onclick="zoomToState(29,7); setCurrentState('New Hampshire')">New Hampshire</li>
+                <li onclick="zoomToState(30,7); setCurrentState('New Jersey')">New Jersey</li>
+                <li onclick="zoomToState(31,7); setCurrentState('New Mexico')">New Mexico</li>
+                <li onclick="zoomToState(32,7); setCurrentState('New York')">New York</li>
+                <li onclick="zoomToState(33,7); setCurrentState('North Carolina')">North Carolina</li>
+                <li onclick="zoomToState(34,7); setCurrentState('North Dakota')">North Dakota</li>
+                <li onclick="zoomToState(35,7); setCurrentState('Ohio')">Ohio</li>
+                <li onclick="zoomToState(36,7); setCurrentState('Oklahoma')">Oklahoma</li>
+                <li onclick="zoomToState(37,7); setCurrentState('Oregon')">Oregon</li>
+                <li onclick="zoomToState(38,7); setCurrentState('Pennsylvania')">Pennsylvania</li>
+                <li onclick="zoomToState(39,7); setCurrentState('Rhode Island')">Rhode Island</li>
+                <li onclick="zoomToState(40,7); setCurrentState('South Carolina')">South Carolina</li>
+                <li onclick="zoomToState(41,7); setCurrentState('South Dakota')">South Dakota</li>
+                <li onclick="zoomToState(42,7); setCurrentState('Tennessee')">Tennessee</li>
+                <li onclick="zoomToState(43,7); setCurrentState('Texas')">Texas</li>
+                <li onclick="zoomToState(44,7); setCurrentState('Utah')">Utah</li>
+                <li onclick="zoomToState(45,7); setCurrentState('Vermont')">Vermont</li>
+                <li onclick="zoomToState(46,7); setCurrentState('Virginia')">Virginia</li>
+                <li onclick="zoomToState(47,7); setCurrentState('Washington')">Washington</li>
+                <li onclick="zoomToState(48,7); setCurrentState('West Virginia')">West Virginia</li>
+                <li onclick="zoomToState(49,7); setCurrentState('Wisconsin')">Wisconsin</li>
+                <li onclick="zoomToState(50,7); setCurrentState('Wyoming')">Wyoming</li>  
+            </ul>
+        </div>
+    </aside>
+   
+    <footer>
+        <div id="statisticsBlock">
+            <ul><h2>Statistic</h2></ul>
+            <ul><h3 class="statCurrentState">USA</h3></ul>
+            <ul><div>Total Covid Cases: </div><div class="statTotalCovid"></div></ul>
+            <ul><div>Average Median Income: </div><div class="statIncome"></div></ul>
+            <ul>Mean</ul>
+            <ul>Correlation</ul>
+        </div>
+    </footer>
+
+    <!--Temporary dumby data for testing-->
+    <script src="src/NJ_Counties.js"></script>
+    <script src="src/NJ_Counties_Simple.js"></script>
+    <script src="src/Multiple_States_Simple.js"></script>
+
+    <!--Keep these. These are the actual scripts-->
+    <script src="src/globals.js"></script>
+    <script src='https://unpkg.com/simple-statistics@7.3.0/dist/simple-statistics.min.js'></script>
+    <script src="src/stateCentroids.js"></script>
+    <script src="src/leafletMapStyles.js"></script>
+    <script src="src/mapSetup.js"></script>
+    <script src="src/main.js"></script>
+    <script src="src/analysis.js"></script>
+    <script src="src/buttons.js"></script>
+
+</body>
+</html>

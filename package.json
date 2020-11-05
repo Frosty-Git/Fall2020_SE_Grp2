@@ -1,0 +1,29 @@
+{
+  "name": "NodeJS",
+  "version": "1.0.0",
+  "description": "-------------------------------------\r Node.js Initial Setup",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "pg": "^8.4.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Frosty-Git/NodeJs_Testing.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Frosty-Git/NodeJs_Testing/issues"
+  },
+  "homepage": "https://github.com/Frosty-Git/NodeJs_Testing#readme"
+}
