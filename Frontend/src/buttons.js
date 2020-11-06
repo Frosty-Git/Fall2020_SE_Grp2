@@ -22,7 +22,13 @@
 
 //     delay()
 // }
+
+
 const FIRST_DATE_STRING = dateStringFromMilli(Date.parse(FIRST_DATE));
+//Date Slider
+var slider = document.getElementById("myRange");
+//Current Date Text
+var dateText = document.getElementById("dateText");
 
 function pressPlay() {
     //console.log(date);
@@ -34,7 +40,7 @@ function pressPlay() {
     const sleepNow = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
 
     async function delay() {
-        for (milliDate; !paused && milliDate < endDateMilli; (milliDate += 86400000)) {
+        for (milliDate; !paused && milliDate <= endDateMilli; (milliDate += 86400000)) {
             await sleepNow(1000)
             var milliAsDate = new Date(milliDate);
             var dateString = dateStringFromMilli(milliAsDate);  //date string needs single quotes for query
@@ -43,6 +49,9 @@ function pressPlay() {
             date = new Date(milliAsDate);
             //console.log(date);
             covid.resetStyle();
+            //Update the date slider bar.
+            slider.value++;
+            dateText.innerHTML = dateStringFromMilli(Date.parse(date));
         }
     }
     delay()
@@ -81,6 +90,9 @@ function pressStop() {
     updateDateText(FIRST_DATE_STRING);
     console.log(date);
     covid.resetStyle();
+    //Update the date slider bar.
+    slider.value = 0;
+    dateText.innerHTML = dateStringFromMilli(Date.parse(date));
 }
 
 /**
@@ -152,14 +164,25 @@ function toggleSidebar(ref){
 }
 
 //-----------Date Control Slider-----------------
-var slider = document.getElementById("myRange");
-var output = document.getElementById("demo");
-output.innerHTML = slider.value; // Display the default slider value
+
+//output.innerHTML = slider.value; // Display the default slider value
 
 // Update the current slider value (each time you drag the slider handle)
-slider.oninput = function() {
-  output.innerHTML = this.value;
+slider.onchange = function() {
+  theBigBrainAlgorithm(this.value);
+  dateText.innerHTML = dateStringFromMilli(Date.parse(date));
 }
+
+//Put algorithm here...
+function theBigBrainAlgorithm(sliderValue) {
+    const START_MIL_SEC = 1581656400000;
+    const MIL_SEC_DAY = 86400000;
+
+    date = new Date(sliderValue * MIL_SEC_DAY + START_MIL_SEC);
+
+}
+
+
 //-----------End Date Control Slider-----------------
 
 //1581656400000 feb 14th
