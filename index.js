@@ -55,6 +55,18 @@ app.get('/api/members.json', (req, res) => res.json(members));
 app.get('/api/states.geojson', (req, res) => res.json(states));
 // console.log(states);
 
+//Get Date Test from DB
+async function getDateTest() {
+    try {
+        var dateTest = await db.connectDateTest();
+        app.get('/api/dateTest.json', (req, res) => res.json(dateTest));
+    }
+    catch(e) {
+        console.log(e);
+    }
+}
+getDateTest();
+
 //--------------------End Test Routes--------------------------------
 
 

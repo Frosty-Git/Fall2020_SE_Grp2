@@ -21,9 +21,14 @@
 <body>
     <header>
         <nav>
-           <li class="logo"><a href="index.html">Covid 19 NJ Logo</a></li>
+           <!--<li class="logo"><a href="index.html">Covid 19 NJ Logo</a></li>-->
         </nav>
     </header>
+
+    <div id="dateText">2020-2-14</div>
+    <div class="slidecontainer">
+        <input type="range" min="0" max="262" value="0" class="slider" id="myRange">
+      </div>
 
     <div id="mapid" ></div> <!--Leaflet Map-->
 
@@ -39,16 +44,6 @@
                 <button class="btn-play" onclick="pressPlay()">play</button>
                 <button class="btn-pause" onclick="pressPause()">pause</button>
                 <button class="btn-stop" onclick="pressStop()" >stop</button>
-                <!--Testing Connection to Node Server-->
-                <button class="ServerConnectTest" onclick="pressTest()">Test</button>
-                <div class="test">7</div>
-                <script>
-                    function pressTest() {
-                        date++;
-                        document.querySelector(".test").innerHTML = date;
-                    }
-                </script>
-                <!--End Testing Connection to Node Server-->
             </ul>
         </div>
 
@@ -120,7 +115,7 @@
             <ul><h3 class="statCurrentState">USA</h3></ul>
             <ul><div>Total Covid Cases: </div><div class="statTotalCovid"></div></ul>
             <ul><div>Average Median Income: </div><div class="statIncome"></div></ul>
-            <ul>Mean</ul>
+            <ul><div>Mean:</div><div class="covidMean"></div></ul>
             <ul>Correlation</ul>
         </div>
     </footer>
