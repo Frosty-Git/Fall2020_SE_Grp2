@@ -28,7 +28,7 @@ function getSingleCovid() {
         var thisProperty = allFeatures[index].properties;    //this current county's properties
         if(thisProperty.STATE_NAME == current_state)
         {
-            covidCases += thisProperty.Covid_Cases;  
+            covidCases += thisProperty.cases;  
             counter ++;
         }
     }

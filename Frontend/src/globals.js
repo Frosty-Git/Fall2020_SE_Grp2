@@ -10,11 +10,11 @@ const END_DATE = new Date(2020, 10, 02); //november 2, 2020
 var date = FIRST_DATE;
 var current_state = 'USA';
 var paused = false;
-const url = 'http://localhost:5000/api/states.geojson';
-//const url = 'http://localhost:5000/api/USA_Counties.geojson';
+//const url = 'http://localhost:5000/api/states.geojson';
+const url = 'http://localhost:5000/api/USA_Counties.geojson';
 
 /* These two shouldn't be here... They are here to make stats work */
-var DATA_LENGTH = 0;
+//var DATA_LENGTH = 0;
 var geoJson;
 var covid;
 var income;

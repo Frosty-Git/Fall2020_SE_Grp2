@@ -47,7 +47,6 @@ function pressPlay() {
             updateDateText(dateString);  //update currentDate in html
             console.log(dateString);
             date = new Date(milliAsDate);
-            //console.log(date);
             covid.resetStyle();
             //Update the date slider bar.
             slider.value++;

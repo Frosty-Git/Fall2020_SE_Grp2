@@ -19,7 +19,7 @@ class Map {
 
         covid = L.geoJson(geoJson, {style: styleCovid});
         income = L.geoJson(geoJson, {style: styleIncome});
-        DATA_LENGTH = geoJson.features[0].properties.Covid_Cases.length;
+        //DATA_LENGTH = geoJson.features[0].properties.covid.length;
 
         /* Creates Leaflet Map */
         var osm = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
