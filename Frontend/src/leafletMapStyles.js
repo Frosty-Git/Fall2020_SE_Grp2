@@ -24,7 +24,7 @@ function getIncomeColor(a) {
 
 function styleCovid(feature) {
     return {
-        fillColor: getCovidColor(feature.properties.Covid_Cases[current_day]),
+        fillColor: getCovidColor(feature.properties.Covid_Cases),
         weight: 0.5,
         opacity: 1,
         color: 'black',

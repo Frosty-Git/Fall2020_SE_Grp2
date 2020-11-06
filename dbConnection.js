@@ -46,6 +46,24 @@ class DbConnection {
         
         return results;
     }
+
+    static async connectDateTest() {
+                /* Establish database connection */
+                const {Client} = require('pg')
+                const client = new Client({
+                    user: "postgres",
+                    password: "BadBiffBad0809!",
+                    host: "3.80.98.188",
+                    post: 5432,
+                    database: "nj_cia"
+                })  
+                client.connect();
+        
+        const qs = 'select * from public."Date_Testing"';
+        var results = await client.query(qs);
+        console.log(results);
+        return results;
+    }
 }
 
 /**
