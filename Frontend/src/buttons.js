@@ -28,7 +28,7 @@ function pressPlay() {
     //console.log(date);
     var milliDate = Number(Date.parse(date)); //date in millisecond format, 86400000 is one day's worth of time
     console.log(milliDate);
-    endDateMilli = Number(Date.parse(new Date(2020, 10, 02))); //november 2, 2020 in millisecond form
+    endDateMilli = Number(Date.parse(END_DATE)); //end date in millisecond form
 
     paused = false;
     const sleepNow = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
@@ -150,3 +150,17 @@ function setCovidMean(mean) {
 function toggleSidebar(ref){
     document.getElementById("sidebar").classList.toggle('active');
 }
+
+//-----------Date Control Slider-----------------
+var slider = document.getElementById("myRange");
+var output = document.getElementById("demo");
+output.innerHTML = slider.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
+//-----------End Date Control Slider-----------------
+
+//1581656400000 feb 14th
+//add day 86400000
