@@ -22,13 +22,16 @@ function getSingleCovid() {
     var allFeatures = geoJson.features;    //array of all county features
     var length = allFeatures.length
     var covidCases = 0;
+    var counter = 0;
     for( ; index < length ; index++)
     {
         var thisProperty = allFeatures[index].properties;    //this current county's properties
         if(thisProperty.STATE_NAME == current_state)
         {
             covidCases += thisProperty.Covid_Cases;  
+            counter ++;
         }
     }
-    return covidCases;
+    return [covidCases, counter];   //returns an array containing both covid cases for the state and total counties in the state
 }
+

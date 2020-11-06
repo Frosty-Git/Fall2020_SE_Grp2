@@ -6,21 +6,60 @@
  * The play button's function. Makes the Covid data start moving
  * forward in time starting with the current day.
  */
+// function pressPlay() {
+
+//     paused = false;
+
+//     const sleepNow = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
+
+//     async function delay() {
+//         for (current_day; paused == false && current_day < DATA_LENGTH; current_day++) {
+//             await sleepNow(1000)
+//             console.log(current_day);
+//             covid.resetStyle();
+//         }
+//     }
+
+//     delay()
+// }
+const FIRST_DATE_STRING = dateStringFromMilli(Date.parse(FIRST_DATE));
+
 function pressPlay() {
+    //console.log(date);
+    var milliDate = Number(Date.parse(date)); //date in millisecond format, 86400000 is one day's worth of time
+    console.log(milliDate);
+    endDateMilli = Number(Date.parse(new Date(2020, 10, 02))); //november 2, 2020 in millisecond form
 
     paused = false;
-
     const sleepNow = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
 
     async function delay() {
-        for (current_day; paused == false && current_day < DATA_LENGTH; current_day++) {
+        for (milliDate; !paused && milliDate < endDateMilli; (milliDate += 86400000)) {
             await sleepNow(1000)
-            console.log(current_day);
+            var milliAsDate = new Date(milliDate);
+            var dateString = dateStringFromMilli(milliAsDate);  //date string needs single quotes for query
+            updateDateText(dateString);  //update currentDate in html
+            console.log(dateString);
+            date = new Date(milliAsDate);
+            //console.log(date);
             covid.resetStyle();
         }
     }
-
     delay()
+}
+
+function dateStringFromMilli(dateMilli) {
+    var dateNew = new Date(dateMilli);
+    var curr_month = dateNew.getMonth() + 1; //Months are zero based
+    var curr_date = dateNew.getDate();
+    var curr_year = dateNew.getFullYear();
+    var dateString = curr_year + "-" + curr_month + "-" + curr_date;
+    //console.log(dateString);
+    return dateString;
+}
+
+function updateDateText(dateText) {
+    document.querySelector(".currentDate").innerHTML = dateText;
 }
 
 /**
@@ -29,7 +68,7 @@ function pressPlay() {
  */
 function pressPause() {
     paused = true;
-    console.log(current_day);
+    //console.log(date);
 }
 
 /**
@@ -38,16 +77,17 @@ function pressPause() {
  */
 function pressStop() {
     pressPause();
-    resetDay();
-    console.log(current_day);
+    resetDate();
+    updateDateText(FIRST_DATE_STRING);
+    console.log(date);
     covid.resetStyle();
 }
 
 /**
  * Resets the current day to the first day in the covid data.
  */
-async function resetDay() {
-    current_day = 0;
+async function resetDate() {
+    date = FIRST_DATE;
 }
 
 /**
@@ -83,10 +123,12 @@ function zoomToState(stateIndex, zoomLevel) {
 function setCurrentState(stateName) {
     current_state = stateName;
     setStatCurrentState();
-    var total = getSingleCovid();
-    var income = getStateAvgMedIncome();
-    setStatTotalCovid(total);
+    var total = getSingleCovid();   //getSingleCovid returns an array containing total covid cases for a state (array[0]) and the number of counties (array[1])
+    var income = getStateAvgMedIncome();   
+    var covidMean =  total[0]/total[1];  //total cases over all counties divided by number of counties
+    setStatTotalCovid(total[0]);
     setStatIncome(income);
+    setCovidMean(covidMean);
 }
 
 function setStatCurrentState() {
@@ -99,6 +141,10 @@ function setStatTotalCovid(total) {
 
 function setStatIncome(income) {
     document.querySelector(".statIncome").innerHTML = income;
+}
+
+function setCovidMean(mean) {
+    document.querySelector(".covidMean").innerHTML = mean;
 }
 
 function toggleSidebar(ref){
