@@ -41,6 +41,7 @@ async function getGeojson() {
 }
 getGeojson();
 
+console.log(frontend.date);
 
 //----------------------Test Routes----------------------------------
 //Remember to delete these and their associated files and require 

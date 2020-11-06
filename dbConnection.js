@@ -42,7 +42,7 @@ class DbConnection {
         results = results.replace(/f3/g, 'Med_Income');
         results = JSON.parse(results);
   
-        console.log(results);
+        //console.log(results);
         
         return results;
     }
