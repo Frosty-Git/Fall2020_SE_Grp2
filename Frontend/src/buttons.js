@@ -199,8 +199,38 @@ function sendDate(){
             } ,
             body: JSON.stringify(data)
         }
-        fetch(dateURL, options);
+        fetch(dateURL, options).then(response => {
+            
+            response.json().then(res => {
+                try{
+                    console.log("Successfully converted to geojson.")
+                    console.log(res);
+                    changeMapLayers(res);
+                    
+                }
+                catch (error) {
+                    console.log("ERROR: failed to convert json")
+                    console.log(error);
+                }
+
+            })
+        });
 }
 
+//takes a geojson and uses it to reset the map layers.
+function changeMapLayers(geojson) {
+    // console.log(geoJson);
+    covid = L.geoJson(geojson, {style: styleCovid});
+    income = L.geoJson(geojson, {style: styleIncome});
 
+    /* Sets Leaflet Map Layers */
+    var overlayMaps = {
+        "Covid": covid,
+        "Income": income
+    };
+
+    console.log(mymap.hasLayer(overlayMaps));
+    mymap.removeLayer(covid); //This is not removing the layer...
+    mymap.addLayer(covid);
+}
 
