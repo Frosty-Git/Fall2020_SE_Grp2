@@ -32,14 +32,25 @@ app.use(cors());
 var currentDate = '2020-11-2';
 //----------------Test functions/variables for html communication----
 app.use(express.json());
+
+
+
 app.post('/date-input', (request, response) => { //request variable is from user input, response is response
     currentDate = (request.body).dateString;
     console.log(currentDate);
 });
 
+app.get('/date-input', (req, res) => res.json(currentDate));
 
 
 //-----------------end html communication------------------------
+
+
+app.get('/api/USA_Counties.geojson', (request, response) => {
+    db.connect(currentDate).then(res => response.json(res));
+});
+
+
 
 
 
@@ -48,16 +59,16 @@ app.post('/date-input', (request, response) => { //request variable is from user
  * Gets the geojson from the database using our database
  * connection object.
  */
-async function getGeojson() {
-    try {
-        var geojson = await db.connect(currentDate);
-        app.get('/api/USA_Counties.geojson', (req, res) => res.json(geojson));
-    }
-    catch(e) {
-        console.log(e);
-    }
-}
-getGeojson();
+// async function getGeojson() {
+//     try {
+//         var geojson = await db.connect(currentDate);
+//         app.get('/api/USA_Counties.geojson', (req, res) => res.json(geojson));
+//     }
+//     catch(e) {
+//         console.log(e);
+//     }
+// }
+// getGeojson();
 
 
 //----------------------Test Routes----------------------------------
