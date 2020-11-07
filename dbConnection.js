@@ -1,11 +1,10 @@
-
 class DbConnection {
 
     /**
      * Established connection to the database and queries the
      * database for the USA_Counties geojson.
      */
-    static async connect() {
+    static async connect(date) {
         
         /* Establish database connection */
         const {Client} = require('pg')
@@ -33,8 +32,6 @@ class DbConnection {
         
         //const qs = "SELECT row_to_json(fc) FROM ( SELECT 'FeatureCollection' As type, array_to_json(array_agg(f)) As features FROM (SELECT 'Feature' As type, ST_AsGeoJSON(lg.geom)::json As geometry, row_to_json((\"NAME\", \"FIPS\", Med_Income, \"STATE_NAME\")) As properties FROM \"USA_Counties\" As lg) As f) As fc";
         
-        
-        var date = "2020-11-2"
 
         //NEW QUERY
         var qs = "SELECT row_to_json(fc) FROM ( SELECT 'FeatureCollection' As type, array_to_json(array_agg(f)) As features FROM (SELECT 'Feature' As type, ST_AsGeoJSON(lg.geom)::json As geometry, row_to_json((\"NAME\", \"FIPS\", Med_Income, cases, date, \"STATE_NAME\")) As properties FROM \"DB_Fetch\" As lg WHERE date = $1) As f) As fc";
@@ -75,7 +72,7 @@ class DbConnection {
         
         const qs = 'select * from public."Date_Testing"';
         var results = await client.query(qs);
-        console.log(results);
+        //console.log(results);
         return results;
     }
 }

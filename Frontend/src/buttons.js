@@ -168,8 +168,9 @@ function toggleSidebar(ref){
 
 // Update the current slider value (each time you drag the slider handle)
 slider.onchange = function() {
-  theBigBrainAlgorithm(this.value);
-  dateText.innerHTML = dateStringFromMilli(Date.parse(date));
+    theBigBrainAlgorithm(this.value);
+    dateText.innerHTML = dateStringFromMilli(Date.parse(date));
+    sendDate();
 }
 
 //Put algorithm here...
@@ -186,3 +187,20 @@ function theBigBrainAlgorithm(sliderValue) {
 
 //1581656400000 feb 14th
 //add day 86400000
+
+//Send current date to node.js
+function sendDate(){
+    const dateString = dateStringFromMilli(Date.parse(date));
+        const data = { dateString }
+        const options = { 
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            } ,
+            body: JSON.stringify(data)
+        }
+        fetch(dateURL, options);
+}
+
+
+

@@ -20,11 +20,29 @@ const states = require('./TestingData/States');
 //----------------End Required files imports-------------------------
 
 
+
 //Allows the access to express.js functions
 const app = express();
 
 //Allows browser to access the server
 app.use(cors());
+
+
+
+var currentDate = '2020-11-2';
+//----------------Test functions/variables for html communication----
+app.use(express.json());
+app.post('/date-input', (request, response) => { //request variable is from user input, response is response
+    currentDate = (request.body).dateString;
+    console.log(currentDate);
+});
+
+
+
+//-----------------end html communication------------------------
+
+
+
 
 /**
  * Gets the geojson from the database using our database
@@ -32,7 +50,7 @@ app.use(cors());
  */
 async function getGeojson() {
     try {
-        var geojson = await db.connect();
+        var geojson = await db.connect(currentDate);
         app.get('/api/USA_Counties.geojson', (req, res) => res.json(geojson));
     }
     catch(e) {
@@ -64,7 +82,7 @@ async function getDateTest() {
         console.log(e);
     }
 }
-getDateTest();
+//getDateTest();
 
 //--------------------End Test Routes--------------------------------
 

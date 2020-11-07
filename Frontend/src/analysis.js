@@ -35,3 +35,4 @@ function getSingleCovid() {
     return [covidCases, counter];   //returns an array containing both covid cases for the state and total counties in the state
 }
 
+
