@@ -220,17 +220,11 @@ function sendDate(){
 //takes a geojson and uses it to reset the map layers.
 function changeMapLayers(geojson) {
     // console.log(geoJson);
+    mymap.removeLayer(covid); //This is not removing the layer...
     covid = L.geoJson(geojson, {style: styleCovid});
     income = L.geoJson(geojson, {style: styleIncome});
 
-    /* Sets Leaflet Map Layers */
-    var overlayMaps = {
-        "Covid": covid,
-        "Income": income
-    };
-
-    console.log(mymap.hasLayer(overlayMaps));
-    mymap.removeLayer(covid); //This is not removing the layer...
+    
     mymap.addLayer(covid);
 }
 

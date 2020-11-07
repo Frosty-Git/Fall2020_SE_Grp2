@@ -1,4 +1,6 @@
-
-
 const leafletMap = new Map();
-const mymap = leafletMap.setup();
+var mymap;
+async function setupMap() {
+    mymap = await leafletMap.setup();
+}
+setupMap();
