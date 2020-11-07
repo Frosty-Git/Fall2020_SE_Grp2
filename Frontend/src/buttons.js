@@ -48,7 +48,7 @@ function pressPlay() {
             date = new Date(milliAsDate);
             sendDate();
             slider.value++;     //Update the date slider bar.
-            updateDateText(dateString);  //update currentDate in html
+            updateDateText(dateString);  //update currentDate in html (not working in time needs to wait for date to update fully)
         }
     }
     delay()
@@ -105,8 +105,8 @@ async function resetDate() {
  */
 function resetUSA() {
     mymap.setView([39.056882, -98.407468], 5);
-    current_state = 'USA';
-    setStatCurrentState();
+    //mymap.flyTo([39.056882, -98.407468], 5);
+    setCurrentStateUsa()
 }
 
 /**
@@ -121,6 +121,16 @@ function zoomToState(stateIndex, zoomLevel) {
     longitude = stateObject.properties.long;
     latitude = stateObject.properties.lat;
     mymap.setView([latitude, longitude], zoomLevel);
+    //mymap.flyTo([latitude, longitude], zoomLevel);
+}
+
+function setCurrentStateUsa() {
+    current_state = 'USA';
+    var total = getUsaCovid();   //getSingleCovid returns an array containing total covid cases for a state (array[0]) and the number of counties (array[1])
+    var income = getUsaAvgMedIncome();   
+    var covidMean =  total[0]/total[1];  //total cases over all counties divided by number of counties
+    var correlation = getUsaCorrelation();
+    updateStatisticsBox(total[0], income[0], covidMean, correlation)
 }
 
 /**
@@ -131,29 +141,19 @@ function zoomToState(stateIndex, zoomLevel) {
  */
 function setCurrentState(stateName) {
     current_state = stateName;
-    setStatCurrentState();
     var total = getSingleCovid();   //getSingleCovid returns an array containing total covid cases for a state (array[0]) and the number of counties (array[1])
     var income = getStateAvgMedIncome();   
-    var covidMean =  total[0]/total[1];  //total cases over all counties divided by number of counties
-    setStatTotalCovid(total[0]);
-    setStatIncome(income);
-    setCovidMean(covidMean);
+    var covidMean =  total[0]/total[1];  //total cases over all counties in the state divided by number of counties
+    var correlation = getCorrelation();
+    updateStatisticsBox(total[0], income[0], covidMean, correlation)
 }
 
-function setStatCurrentState() {
-    document.querySelector(".statCurrentState").innerHTML = current_state;
-}
-
-function setStatTotalCovid(total) {
-    document.querySelector(".statTotalCovid").innerHTML = total;
-}
-
-function setStatIncome(income) {
-    document.querySelector(".statIncome").innerHTML = income;
-}
-
-function setCovidMean(mean) {
-    document.querySelector(".covidMean").innerHTML = mean;
+function updateStatisticsBox(total, income, mean, correlation) {
+    document.querySelector(".statCurrentState").innerHTML = current_state;  //Updates the current state
+    document.querySelector(".statTotalCovid").innerHTML = total;            //Updates the covid total
+    document.querySelector(".statIncome").innerHTML = income;               //Updates the avg median income
+    document.querySelector(".covidMean").innerHTML = mean;                  //Upates the covid mean
+    document.querySelector(".correlation").innerHTML = correlation;
 }
 
 function toggleSidebar(ref){
@@ -169,6 +169,13 @@ slider.onchange = function() {
     theBigBrainAlgorithm(this.value);
     dateText.innerHTML = dateStringFromMilli(Date.parse(date));
     sendDate();
+    
+    if(current_state != 'USA') {
+        setCurrentState(current_state);     //update the stats box with the same currently selected state, but with new stats for the new date (not working, has to wait for sendState)
+    }
+    else {
+        setCurrentStateUsa();
+    }
 }
 
 //Put algorithm here...
