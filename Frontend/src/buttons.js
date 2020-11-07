@@ -44,14 +44,11 @@ function pressPlay() {
             await sleepNow(1000)
             var milliAsDate = new Date(milliDate);
             var dateString = dateStringFromMilli(milliAsDate);  //date string needs single quotes for query
-            updateDateText(dateString);  //update currentDate in html
             console.log(dateString);
             date = new Date(milliAsDate);
-            // covid.resetStyle();
-            sendDate()
-            //Update the date slider bar.
-            slider.value++;
-            dateText.innerHTML = dateStringFromMilli(Date.parse(date));
+            sendDate();
+            slider.value++;     //Update the date slider bar.
+            updateDateText(dateString);  //update currentDate in html
         }
     }
     delay()
@@ -68,8 +65,6 @@ function dateStringFromMilli(dateMilli) {
 }
 
 function updateDateText(dateText) {
-    console.log(dateText);
-    console.log(document.querySelector(".dateText"));
     document.querySelector(".dateText").innerHTML = dateText;
 }
 

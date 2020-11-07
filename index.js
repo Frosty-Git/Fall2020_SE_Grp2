@@ -29,7 +29,7 @@ app.use(cors());
 //Allows express app to be able to interact with json data
 app.use(express.json());
 //The current date for database queries
-var currentDate = '2020-10-15';
+var currentDate = '2020-10-2';
 
 //-----------------End Express Setup---------------------------------
 
@@ -40,7 +40,6 @@ var currentDate = '2020-10-15';
 //Post Route for when the current date changes on the client.
 //request variable is from user input, response is response
 app.post('/date-input', (request, response) => { 
-    console.log(request.body);
     currentDate = (request.body).dateString;
     console.log("New current date: " + currentDate);
     db.connect(currentDate).then((resolve, reject) => {
