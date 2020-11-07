@@ -47,7 +47,8 @@ function pressPlay() {
             updateDateText(dateString);  //update currentDate in html
             console.log(dateString);
             date = new Date(milliAsDate);
-            covid.resetStyle();
+            // covid.resetStyle();
+            sendDate()
             //Update the date slider bar.
             slider.value++;
             dateText.innerHTML = dateStringFromMilli(Date.parse(date));
@@ -67,7 +68,9 @@ function dateStringFromMilli(dateMilli) {
 }
 
 function updateDateText(dateText) {
-    document.querySelector(".currentDate").innerHTML = dateText;
+    console.log(dateText);
+    console.log(document.querySelector(".dateText"));
+    document.querySelector(".dateText").innerHTML = dateText;
 }
 
 /**
@@ -205,8 +208,9 @@ function sendDate(){
                 try{
                     console.log("Successfully converted to geojson.")
                     console.log(res);
+                    geoJson = res;
                     changeMapLayers(res);
-                    
+                    //Update statistics here
                 }
                 catch (error) {
                     console.log("ERROR: failed to convert json")
@@ -220,9 +224,14 @@ function sendDate(){
 //takes a geojson and uses it to reset the map layers.
 function changeMapLayers(geojson) {
     // console.log(geoJson);
+    
     mymap.removeLayer(covid); //This is not removing the layer...
+
+    layerControls.removeLayer(covid);
     covid = L.geoJson(geojson, {style: styleCovid});
     income = L.geoJson(geojson, {style: styleIncome});
+
+    layerControls.addBaseLayer(covid, "Covid");
 
     
     mymap.addLayer(covid);

@@ -16,6 +16,9 @@ const dateURL = 'http://localhost:5000/date-input';
 
 /* These two shouldn't be here... They are here to make stats work */
 //var DATA_LENGTH = 0;
+
+
 var geoJson;
 var covid;
 var income;
+var mymap;
