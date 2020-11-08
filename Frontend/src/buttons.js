@@ -24,6 +24,12 @@ function pressPlay() {
             sendDate();
             slider.value++;     //Update the date slider bar.
             updateDateText(dateString);  //update currentDate in html (not working in time needs to wait for date to update fully)
+            if(current_state != 'USA') {
+                setCurrentState(current_state);     //update the stats box with the same currently selected state, but with new stats for the new date (not working, has to wait for sendState)
+            }
+            else {
+                setCurrentStateUsa();
+            }
         }
     }
     delay()
