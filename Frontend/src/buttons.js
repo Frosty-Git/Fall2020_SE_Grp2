@@ -1,28 +1,3 @@
-/**
- * JS code to control the function of the HTML buttons.
- */
-
-/**
- * The play button's function. Makes the Covid data start moving
- * forward in time starting with the current day.
- */
-// function pressPlay() {
-
-//     paused = false;
-
-//     const sleepNow = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
-
-//     async function delay() {
-//         for (current_day; paused == false && current_day < DATA_LENGTH; current_day++) {
-//             await sleepNow(1000)
-//             console.log(current_day);
-//             covid.resetStyle();
-//         }
-//     }
-
-//     delay()
-// }
-
 
 const FIRST_DATE_STRING = dateStringFromMilli(Date.parse(FIRST_DATE));
 //Date Slider
@@ -104,9 +79,22 @@ async function resetDate() {
  * Centered on the contiguous USA.
  */
 function resetUSA() {
+    removeCurrentOutline();
     mymap.setView([39.056882, -98.407468], 5);
     //mymap.flyTo([39.056882, -98.407468], 5);
     setCurrentStateUsa()
+}
+
+function setCurrentStateUsa() {
+    current_state = 'USA';
+    var total = getUsaCovid();   //getSingleCovid returns an array containing total covid cases for a state (array[0]) and the number of counties (array[1])
+    console.log(total[0]);
+    var income = getUsaAvgMedIncome();   
+    var covidMean =  total[0]/total[1];  //total cases over all counties divided by number of counties
+    console.log("income length: " + usaIncome.length);
+    console.log("cases length: " + usaCases.length);
+    var correlation = getPearsonCorrelation(usaIncome, usaCases);
+    updateStatisticsBox(total[0], income, covidMean, correlation);
 }
 
 /**
@@ -124,15 +112,6 @@ function zoomToState(stateIndex, zoomLevel) {
     //mymap.flyTo([latitude, longitude], zoomLevel);
 }
 
-function setCurrentStateUsa() {
-    current_state = 'USA';
-    var total = getUsaCovid();   //getSingleCovid returns an array containing total covid cases for a state (array[0]) and the number of counties (array[1])
-    var income = getUsaAvgMedIncome();   
-    var covidMean =  total[0]/total[1];  //total cases over all counties divided by number of counties
-    var correlation = getUsaCorrelation();
-    updateStatisticsBox(total[0], income[0], covidMean, correlation)
-}
-
 /**
  * Sets the current state global variable to the state that is
  * currently selected.
@@ -141,11 +120,12 @@ function setCurrentStateUsa() {
  */
 function setCurrentState(stateName) {
     current_state = stateName;
+    outlineState();
     var total = getSingleCovid();   //getSingleCovid returns an array containing total covid cases for a state (array[0]) and the number of counties (array[1])
     var income = getStateAvgMedIncome();   
     var covidMean =  total[0]/total[1];  //total cases over all counties in the state divided by number of counties
-    var correlation = getCorrelation();
-    updateStatisticsBox(total[0], income[0], covidMean, correlation)
+    var correlation = getPearsonCorrelation(countyIncomes, countyCase);
+    updateStatisticsBox(total[0], income, covidMean, correlation);
 }
 
 function updateStatisticsBox(total, income, mean, correlation) {
@@ -239,3 +219,40 @@ function changeMapLayers(geojson) {
     mymap.addLayer(covid);
 }
 
+function outlineState() {
+    removeCurrentOutline();
+
+    if(current_state != 'USA') {
+        var geoFeatures = geoJson.features;
+        var index = 0;
+        var length = geoFeatures.length
+        var counter = 0;    //total counties of current state
+        for (; index < length; index++) {
+            var thisProperty = geoFeatures[index].properties;    //this current county's properties
+            if (thisProperty.STATE_NAME == current_state) {
+                stateGeojsons[counter] = L.geoJson(geoFeatures[index], {style: styleState});    //create a layer from the current county's features and add it to the state's array of layers
+                counter++;
+            }
+        }
+        console.log(stateGeojsons.length)
+        index = 0;
+        for(; index < counter; index++)
+        {
+            stateGeojsons[index].addTo(mymap)   //add the layer for each county to the map
+
+        }
+    } 
+}
+
+//remove the layers for the currently selected state
+function removeCurrentOutline() {
+    if(stateGeojsons.length > 0)
+    {
+        var i = 0;
+        var geoLength = stateGeojsons.length;
+        for(; i < geoLength; i++)
+        {
+            mymap.removeLayer(stateGeojsons[i]);
+        }
+    }
+}

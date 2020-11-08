@@ -2,6 +2,8 @@
  * Style functions for Leaflet Data Layers.
  */
 
+const nodemon = require("nodemon");
+
 function getCovidColor(a) {
     return a > 20000  ? '#e84141' :
            a > 10000  ? '#c75d00' :
@@ -39,5 +41,15 @@ function styleIncome(feature) {
         color: 'black',
         dashArray: '0',
         fillOpacity: 0.7
+    };
+}
+
+function styleState(feature) {
+    return {
+        fillColor: 'none',
+        weight: 3,
+        opacity: 1,
+        color: 'red',
+        dashArray: '0',
     };
 }

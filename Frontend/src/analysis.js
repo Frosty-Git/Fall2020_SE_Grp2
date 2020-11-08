@@ -1,10 +1,10 @@
 function getStateAvgMedIncome() {
+    countyIncomes = [];
     var index = 0;
     var allFeatures = geoJson.features;    //array of all county features
     var length = allFeatures.length
     var income = 0;
     var counter = 0;    //total counties of current state
-    var allCountyIncomes = [];
     for( ; index < length ; index++)
     {
         var thisProperty = allFeatures[index].properties;    //this current county's properties
@@ -12,21 +12,21 @@ function getStateAvgMedIncome() {
         {
             var countyIncome = thisProperty.Med_Income;
             income += countyIncome;
-            allCountyIncomes[counter] = countyIncome;
+            countyIncomes[counter] = countyIncome;
             counter++;
         }
     }
     income = (income/counter);
-    return [income, allCountyIncomes];
+    return income
 }
 
 function getSingleCovid() {
+    countyCase = [];
     var index = 0;
     var allFeatures = geoJson.features;    //array of all county features
     var length = allFeatures.length
     var covidCases = 0;
     var counter = 0;
-    var allCountyCases = [];
     for( ; index < length ; index++)
     {
         var thisProperty = allFeatures[index].properties;    //this current county's properties
@@ -34,48 +34,39 @@ function getSingleCovid() {
         {
             var countyCases = thisProperty.cases;
             covidCases += countyCases;
-            allCountyCases[counter] = countyCases;  
+            countyCase[counter] = countyCases;  
             counter ++;
         }
     }
-    return [covidCases, counter, allCountyCases];   //returns an array containing both covid cases for the state and total counties in the state
-}
-
-function getCorrelation() {
-    var allIncome = getStateAvgMedIncome();
-    var allCases = getSingleCovid();
-    var incomeArray = allIncome[1];
-    var covidArray = allCases[2];
-    var correlation = getPearsonCorrelation(incomeArray, covidArray);
-    return correlation;
+    return [covidCases, counter];   //returns an array containing both covid cases for the state and total counties in the state
 }
 
 function getUsaAvgMedIncome() {
+    usaIncome = [];
     var index = 0;
     var allFeatures = geoJson.features;    //array of all county features
     var length = allFeatures.length
     var income = 0;
     var counter = 0;    //total counties of current state
-    var incomesUSA = [];
     for( ; index < length ; index++)
     {
         var thisProperty = allFeatures[index].properties;    //this current county's properties
         var countyIncome = thisProperty.Med_Income;
         income += countyIncome;
-        incomesUSA[counter] = countyIncome;
+        usaIncome[counter] = countyIncome;
         counter++;
     }
     income = (income/counter);
-    return [income, incomesUSA];
+    return income;
 }
 
 function getUsaCovid() {
+    usaCases = [];
     var index = 0;
     var allFeatures = geoJson.features;    //array of all county features
     var length = allFeatures.length
     var covidCases = 0;
     var counter = 0;
-    var usaCases = [];
     for( ; index < length ; index++)
     {
         var thisProperty = allFeatures[index].properties;    //this current county's properties
@@ -84,16 +75,7 @@ function getUsaCovid() {
         usaCases[counter] = countyCases;  
         counter ++;
     }
-    return [covidCases, counter, usaCases];   //returns an array containing both covid cases for the state and total counties in the state
-}
-
-function getUsaCorrelation() {
-    var allIncome = getUsaAvgMedIncome();
-    var allCases = getUsaCovid();
-    var incomeArray = allIncome[1];
-    var covidArray = allCases[2];
-    var correlation = getPearsonCorrelation(incomeArray, covidArray);
-    return correlation;
+    return [covidCases, counter];   //returns an array containing both covid cases for the state and total counties in the state
 }
 
 //yoinked from https://memory.psych.mun.ca/tech/js/correlation.shtml

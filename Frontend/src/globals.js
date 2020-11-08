@@ -19,6 +19,14 @@ const dateURL = 'http://localhost:5000/date-input';
 
 
 var geoJson;
+var stateGeojsons = []; //array containing individual layers at each index for the geometries of each county of the current state
 var covid;
 var income;
 var mymap;
+
+//Used in analysis.js to fill out information for correlation, rather than making a new call to the functions in correlation
+var countyIncomes = [];
+var countyCase = [];
+var usaIncome = [];
+var usaCases = [];
+
