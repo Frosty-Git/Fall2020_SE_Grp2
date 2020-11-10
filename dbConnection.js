@@ -1,11 +1,10 @@
-
 class DbConnection {
 
     /**
      * Established connection to the database and queries the
      * database for the USA_Counties geojson.
      */
-    static async connect() {
+    static async connect(date) {
         
         /* Establish database connection */
         const {Client} = require('pg')
@@ -28,10 +27,18 @@ class DbConnection {
         //const qs = 'SELECT * FROM "test_geojsonformat"';
         
         // const qs = "SELECT row_to_json(fc) FROM ( SELECT 'FeatureCollection' As type, array_to_json(array_agg(f)) As features FROM (SELECT 'Feature' As type, ST_AsGeoJSON(lg.geom)::json As geometry, row_to_json((\"NAME\", \"FIPS\", Med_Income)) As properties FROM test_geojsonformat As lg) As f) As fc";
-        const qs = "SELECT row_to_json(fc) FROM ( SELECT 'FeatureCollection' As type, array_to_json(array_agg(f)) As features FROM (SELECT 'Feature' As type, ST_AsGeoJSON(lg.geom)::json As geometry, row_to_json((\"NAME\", \"FIPS\", Med_Income)) As properties FROM \"USA_Counties\" As lg) As f) As fc";
         
+        
+        
+        //const qs = "SELECT row_to_json(fc) FROM ( SELECT 'FeatureCollection' As type, array_to_json(array_agg(f)) As features FROM (SELECT 'Feature' As type, ST_AsGeoJSON(lg.geom)::json As geometry, row_to_json((\"NAME\", \"FIPS\", Med_Income, \"STATE_NAME\")) As properties FROM \"USA_Counties\" As lg) As f) As fc";
+        
+
+        //NEW QUERY
+        var qs = "SELECT row_to_json(fc) FROM ( SELECT 'FeatureCollection' As type, array_to_json(array_agg(f)) As features FROM (SELECT 'Feature' As type, ST_AsGeoJSON(lg.geom)::json As geometry, row_to_json((\"NAME\", \"FIPS\", Med_Income, cases, date, \"STATE_NAME\")) As properties FROM \"DB_Fetch\" As lg WHERE date = $1) As f) As fc";
         //------------Cleanup Query Result---------------------------
-        var results = await client.query(qs);
+        var values = [date];
+        var results = await client.query(qs, values);
+        //var results = await client.query(qs);
         results = results.rows[0];
         results = JSON.stringify(results);
         results = results.replace("{\"row_to_json\":", "");
@@ -40,6 +47,10 @@ class DbConnection {
         results = results.replace(/f1/g, 'NAME');
         results = results.replace(/f2/g, 'FIPS');
         results = results.replace(/f3/g, 'Med_Income');
+        results = results.replace(/f4/g, 'cases');
+        results = results.replace(/f5/g, 'date');
+        results = results.replace(/f6/g, 'STATE_NAME');
+
         results = JSON.parse(results);
   
         //console.log(results);
@@ -61,7 +72,7 @@ class DbConnection {
         
         const qs = 'select * from public."Date_Testing"';
         var results = await client.query(qs);
-        console.log(results);
+        //console.log(results);
         return results;
     }
 }

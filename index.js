@@ -16,30 +16,73 @@ const members = require('./TestingData/Members');
 //States test data
 const states = require('./TestingData/States');
 
-
 //----------------End Required files imports-------------------------
 
 
+
+//-------------------Express Setup-----------------------------------
+
 //Allows the access to express.js functions
 const app = express();
-
 //Allows browser to access the server
 app.use(cors());
+//Allows express app to be able to interact with json data
+app.use(express.json());
+//The current date for database queries
+var currentDate = '2020-10-2';
+
+//-----------------End Express Setup---------------------------------
+
+
+
+//----------------------------Routes---------------------------------
+
+//Post Route for when the current date changes on the client.
+//request variable is from user input, response is response
+app.post('/date-input', (request, response) => { 
+    currentDate = (request.body).dateString;
+    console.log("New current date: " + currentDate);
+    db.connect(currentDate).then((resolve, reject) => {
+        try{
+            response.json(resolve);
+            console.log("Response sent to client");
+        }
+        catch(error) {
+            console.log("ERROR: Failed to post data.");
+            console.log(error);
+        }
+    });
+    
+});
+
+//Get Route that provides the server's current date variable value.
+app.get('/date-input', (req, res) => res.json(currentDate));
+
+//Get Route which queries the database for USA_Counties.geojson at
+//the current date variable's value. Provides that geojson to the
+//client.
+app.get('/api/USA_Counties.geojson', (request, response) => {
+    db.connect(currentDate).then(res => response.json(res));
+});
+
+//--------------------------End Routes-------------------------------
+
+
 
 /**
  * Gets the geojson from the database using our database
  * connection object.
  */
-async function getGeojson() {
-    try {
-        var geojson = await db.connect();
-        app.get('/api/USA_Counties.geojson', (req, res) => res.json(geojson));
-    }
-    catch(e) {
-        console.log(e);
-    }
-}
-getGeojson();
+// async function getGeojson() {
+//     try {
+//         var geojson = await db.connect(currentDate);
+//         app.get('/api/USA_Counties.geojson', (req, res) => res.json(geojson));
+//     }
+//     catch(e) {
+//         console.log(e);
+//     }
+// }
+// getGeojson();
 
 console.log(frontend.date);
 
@@ -55,6 +98,7 @@ app.get('/api/members.json', (req, res) => res.json(members));
 app.get('/api/states.geojson', (req, res) => res.json(states));
 // console.log(states);
 
+
 //Get Date Test from DB
 async function getDateTest() {
     try {
@@ -65,13 +109,14 @@ async function getDateTest() {
         console.log(e);
     }
 }
-getDateTest();
+//getDateTest();
 
 //--------------------End Test Routes--------------------------------
 
 
+
 //Create route for the web server
-app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'public')));
 
 //Setup the port for the web server.
 //Server Environment Default Port or Port 5000
