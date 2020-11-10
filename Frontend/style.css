@@ -42,18 +42,18 @@ li{
     list-style-type: none;
 }
 #mapid {
-    width: auto;
-    height: 92vh;
+    height: auto;
     position: relative;
+    background-color: #ff0000;
 }
 
 #sidebar {
     background-color: rgba(221, 221, 221, 0.74);
     width: 150px;
-    height: 52vh;
+    height: 82%;
     position: absolute;
     top: 50px;
-    left: 10px;
+    left: 0px;
     z-index: 2000;
     overflow: auto;
     overflow-x: hidden;
@@ -75,9 +75,9 @@ li{
 
 /* FOOTER */
 footer{
-    background: red;/*rgb(117, 207, 240, 1);*/
+    background: rgb(117, 207, 240, 1);
     color: black;
-    height: 90px;
+    height: 6%;
     width: 100%;
     bottom: 0px;
     padding: 20px 20px;
@@ -108,7 +108,7 @@ footer ul{
     -webkit-appearance: none;  /* Override default CSS styles */
     appearance: none;
     width: 100%; /* Full-width */
-    height: 25px; /* Specified height */
+    height: 5%; /* Specified height */
     background: #d3d3d3; /* Grey background */
     outline: none; /* Remove outline */
     opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
