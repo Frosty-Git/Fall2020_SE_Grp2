@@ -27,12 +27,6 @@
     </header>
 
     <div id="mapid" ></div> <!--Leaflet Map-->
-
-    <div class="toggleBtn" onclick="toggleSidebar(this)">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
     
     <aside id ="sidebar">
         <!--Buttons to control the data-->
@@ -107,15 +101,16 @@
     </aside>
    
     <footer>
-        <ul>
-            <h2><li id="legend">Legend</li></h2>
-            <li id="statisticsBlock">
-                <li><h2>Statistic</h2>
+        <ul id="legend">
+            <li><h2>Legend</h2></li>
+        </ul>
+        <ul id="statisticsBlock">
+            <li><h2>Statistic</h2>
                 <li><h3 class="statCurrentState">USA</h3></li>
                 <li><div>Total Covid Cases: </div><div class="statTotalCovid"></div></li>
                 <li><div>Average Median Income: </div><div class="statIncome"></div></li>
                 <li><div>Mean:</div><div class="covidMean"></div></li>
-                <li>Correlation</li>
+                <li><div>Correlation</div></li>
                 </li>
             </li>
         </ul>
