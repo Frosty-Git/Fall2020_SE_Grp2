@@ -2,7 +2,7 @@
  * Style functions for Leaflet Data Layers.
  */
 
-const nodemon = require("nodemon");
+// const nodemon = require("nodemon");
 
 function getCovidColor(a) {
     return a > 20000  ? '#e84141' :
