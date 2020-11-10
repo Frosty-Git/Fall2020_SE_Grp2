@@ -137,9 +137,9 @@ function setCurrentState(stateName) {
 function updateStatisticsBox(total, income, mean, correlation) {
     document.querySelector(".statCurrentState").innerHTML = current_state;  //Updates the current state
     document.querySelector(".statTotalCovid").innerHTML = total;            //Updates the covid total
-    document.querySelector(".statIncome").innerHTML = income;               //Updates the avg median income
-    document.querySelector(".covidMean").innerHTML = mean;                  //Upates the covid mean
-    document.querySelector(".correlation").innerHTML = correlation;
+    document.querySelector(".statIncome").innerHTML = "$" + income.toFixed(2);               //Updates the avg median income
+    document.querySelector(".covidMean").innerHTML = mean.toFixed(2);                  //Upates the covid mean
+    document.querySelector(".correlation").innerHTML = correlation.toFixed(5);
 }
 
 function toggleSidebar(ref){
