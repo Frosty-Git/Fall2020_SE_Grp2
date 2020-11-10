@@ -20,15 +20,11 @@
 
 <body>
     <header>
-        <nav>
-           <!--<li class="logo"><a href="index.html">Covid 19 NJ Logo</a></li>-->
-        </nav>
+        <div id="dateText">2020-2-14</div>
+        <div class="slidecontainer">
+            <input type="range" min="0" max="262" value="0" class="slider" id="myRange">
+        </div>
     </header>
-
-    <div id="dateText">2020-2-14</div>
-    <div class="slidecontainer">
-        <input type="range" min="0" max="262" value="0" class="slider" id="myRange">
-      </div>
 
     <div id="mapid" ></div> <!--Leaflet Map-->
 
@@ -37,6 +33,7 @@
         <span></span>
         <span></span>
     </div>
+    
     <aside id ="sidebar">
         <!--Buttons to control the data-->
         <div class="timeControls">
@@ -110,14 +107,18 @@
     </aside>
    
     <footer>
-        <div id="statisticsBlock">
-            <ul><h2>Statistic</h2></ul>
-            <ul><h3 class="statCurrentState">USA</h3></ul>
-            <ul><div>Total Covid Cases: </div><div class="statTotalCovid"></div></ul>
-            <ul><div>Average Median Income: </div><div class="statIncome"></div></ul>
-            <ul><div>Mean:</div><div class="covidMean"></div></ul>
-            <ul>Correlation</ul>
-        </div>
+        <ul>
+            <h2><li id="legend">Legend</li></h2>
+            <li id="statisticsBlock">
+                <li><h2>Statistic</h2>
+                <li><h3 class="statCurrentState">USA</h3></li>
+                <li><div>Total Covid Cases: </div><div class="statTotalCovid"></div></li>
+                <li><div>Average Median Income: </div><div class="statIncome"></div></li>
+                <li><div>Mean:</div><div class="covidMean"></div></li>
+                <li>Correlation</li>
+                </li>
+            </li>
+        </ul>
     </footer>
 
     <!--Temporary dumby data for testing-->

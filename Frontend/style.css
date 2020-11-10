@@ -4,12 +4,12 @@
 }
 
 body{
-    background: black;
-    color: white;
+    background: rgb(117, 207, 240, 1);
+    color: black;
     font-family: Arial, Helvetica Neue, sans-serif;
 }
 
-/* HEADER */
+/* HEADER 
 header {
     background: black;
     background-size: 100%;
@@ -36,20 +36,20 @@ header .logo a{
     text-indent: -9999999px;
     top: -14px;
     width: 300px;
-}
+}*/
 
 li{
     list-style-type: none;
 }
 #mapid {
-    height: 90vh;
+    height: 92vh;
     position: relative;
 }
 
 #sidebar {
-    background-color: lightgray;
+    background-color: rgba(221, 221, 221, 0.74);
     width: 150px;
-    height: 90vh;
+    height: 92vh;
     position: absolute;
     top: 50px;
     left: -150px;
@@ -84,7 +84,7 @@ li{
 }
 
 .states{
-    font-size: 7pt;
+    font-size: 10pt;
     margin: 10px;
     color: #000000;
     list-style: none;
@@ -92,34 +92,34 @@ li{
 }
 
 /* FOOTER */
-/*footer{
-    background: black;
-    color: gray;
-    font-size: 12px;
+footer{
+    background: rgb(117, 207, 240, 1);
+    color: black;
+    height: 90px;
+    width: 100%;
+    bottom: 0px;
+    position: absolute;
+    display: flex;
+    z-index: 1000;
     padding: 20px 20px;
+    font-size: 12px;
     text-align: center;
-}*/
+}
 
-#statisticsBlock {
-    background-color: rgb(244, 245, 181);
+footer ul{
+    display: inline-flex;
+}
+
+/*#statisticsBlock {
+    background-color: rgba(229, 236, 195, 0.521);
     width: 300px;
     height: 200px;
     position: absolute;
-    top: 500px;
-    left: 1200px;
+    bottom: 0px;
+    right: 0px;
     z-index: 2000;
-    transition: all 300ms linear;
     color: black;
-}
-
-
-
-
-
-
-
-
-
+}*/
 
 .slidecontainer {
     width: 100%; /* Width of the outside container */
