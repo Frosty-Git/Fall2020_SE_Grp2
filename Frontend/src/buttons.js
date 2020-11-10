@@ -142,10 +142,6 @@ function updateStatisticsBox(total, income, mean, correlation) {
     document.querySelector(".correlation").innerHTML = correlation.toFixed(5);
 }
 
-function toggleSidebar(ref){
-    document.getElementById("sidebar").classList.toggle('active');
-}
-
 //-----------Date Control Slider-----------------
 
 //output.innerHTML = slider.value; // Display the default slider value
