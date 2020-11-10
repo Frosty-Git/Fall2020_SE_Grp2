@@ -49,15 +49,14 @@ footer{
     color: black;
     width: 90%;
     bottom: 0;
-    padding: 20px 20px;
     position: absolute;
     display: flex;
     font-size: 12px;
     text-align: center;
-    z-index: 2000;
 }
 
 footer ul{
+    background-color: burlywood;
     display: inline-flex;
     flex: 2;
     margin: auto;
