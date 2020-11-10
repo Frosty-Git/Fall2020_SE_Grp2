@@ -42,15 +42,14 @@ li{
     list-style-type: none;
 }
 #mapid {
-    height: auto;
+    height: 90vh;
     position: relative;
-    background-color: #ff0000;
 }
 
 #sidebar {
     background-color: rgba(221, 221, 221, 0.74);
     width: 150px;
-    height: 82%;
+    height: 90%;
     position: absolute;
     top: 50px;
     left: 0px;
@@ -75,15 +74,14 @@ li{
 
 /* FOOTER */
 footer{
-    background: rgb(117, 207, 240, 1);
+    /* background: rgb(117, 207, 240, 1); */
     color: black;
     height: 6%;
     width: 100%;
-    bottom: 0px;
+    /* bottom: 0; */
     padding: 20px 20px;
     position: absolute;
     display: flex;
-    z-index: 1000;
     font-size: 12px;
     text-align: center;
 }

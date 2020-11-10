@@ -159,10 +159,6 @@ function setCovidMean(mean) {
     document.querySelector(".covidMean").innerHTML = mean;
 }
 
-function toggleSidebar(ref){
-    document.getElementById("sidebar").classList.toggle('active');
-}
-
 //-----------Date Control Slider-----------------
 
 //output.innerHTML = slider.value; // Display the default slider value
