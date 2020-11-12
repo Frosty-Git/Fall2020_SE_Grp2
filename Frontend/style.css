@@ -1,6 +1,7 @@
 *{
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
 }
 
 body{
@@ -9,25 +10,19 @@ body{
     font-family: Arial, Helvetica Neue, sans-serif;
 }
 
-li{
-    list-style-type: none;
-}
 #mapid {
     height: 80vh;
     position: relative;
-    display: flex;
 }
 
 #sidebar {
     background-color: rgba(221, 221, 221, 0.74);
-    width: 150px;
-    height: 80vh;
-    position: absolute;
+    width: 12vw;
+    height: 92vh;
     top: 50px;
     left: 0px;
+    position: absolute;
     z-index: 2000;
-    overflow: auto;
-    overflow-x: hidden;
 }
 
 .timeControls {
@@ -37,8 +32,8 @@ li{
 }
 
 .states{
-    font-size: 10pt;
-    margin: 10px;
+    font-size: 63%;
+    margin: 1.5em 3em;
     color: #000000;
     list-style: none;
     cursor: pointer;
@@ -51,7 +46,7 @@ footer{
     bottom: 0;
     position: absolute;
     display: flex;
-    font-size: 12px;
+    font-size: 80%;
     text-align: center;
 }
 
