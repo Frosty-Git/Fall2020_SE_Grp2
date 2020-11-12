@@ -37,7 +37,7 @@ button{
 }
 
 .states{
-    font-size: 63%;
+    font-size: 1.42vh;
     margin: 0em 3em;
     color: #000000;
     cursor: pointer;
