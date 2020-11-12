@@ -17,49 +17,51 @@ body{
 
 #sidebar {
     background-color: rgba(221, 221, 221, 0.74);
+    border-radius: 6px;
     width: 12vw;
     height: 92vh;
     top: 50px;
-    left: 0px;
+    left: 6px;
     position: absolute;
-    z-index: 2000;
+    z-index: 1000;
 }
 
 .timeControls {
-    height: 2vh;
-    width: 25vh;
-    margin: 10px;
+    margin: 0.3em 0.8em;
+    display: flex;
+}
+button{
+    margin: 0.2em;
+    padding: 0.1em;
 }
 
 .states{
     font-size: 63%;
-    margin: 1.5em 3em;
+    margin: 0em 3em;
     color: #000000;
-    list-style: none;
     cursor: pointer;
 }
 
 /* FOOTER */
 footer{
-    color: black;
-    width: 90%;
+    width: 99%;
     bottom: 0;
-    position: absolute;
     display: flex;
+    position: absolute;
+    justify-content: space-evenly;
     font-size: 80%;
-    text-align: center;
+    border: 1px solid red;
 }
 
 footer ul{
     background-color: burlywood;
-    display: inline-flex;
-    flex: 2;
-    margin: auto;
+    padding: 1rem;
 }
 
 #statisticsBlock {
-    display: block;
-    text-align: left;
+    background-color: rgb(107, 189, 118);
+    flex-direction: column;
+    flex:2;
 }
 
 .slidecontainer {

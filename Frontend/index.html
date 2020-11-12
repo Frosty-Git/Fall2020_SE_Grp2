@@ -31,11 +31,9 @@
     <aside id ="sidebar">
         <!--Buttons to control the data-->
         <div class="timeControls">
-            <ul>
-                <button class="btn-play" onclick="pressPlay()">play</button>
-                <button class="btn-pause" onclick="pressPause()">pause</button>
-                <button class="btn-stop" onclick="pressStop()" >stop</button>
-            </ul>
+            <button class="btn-play" onclick="pressPlay()">play</button>
+            <button class="btn-pause" onclick="pressPause()">pause</button>
+            <button class="btn-stop" onclick="pressStop()" >stop</button>
         </div>
 
         <!--List of States-->
@@ -106,14 +104,13 @@
         </ul>
         <ul id="statisticsBlock">
             <li><h2>Statistic</h2>
-                <li><h3 class="statCurrentState">USA</h3>></li>
+                <li><h4 class="statCurrentState">USA</h4></li>
                 <li><div>Total Covid Cases: </div><div class="statTotalCovid"></div></li>
                 <li><div>Average Median Income: </div><div class="statIncome"></div></li>
                 <li><div>Mean Cases/County:</div><div class="covidMean"></div></li>
                 <li><div>Correlation</div><div class="correlation"></div></li>
             </li>
         </ul>
-
     </footer>
 
     <!--Temporary dumby data for testing-->
