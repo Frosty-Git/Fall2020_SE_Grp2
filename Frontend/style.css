@@ -54,7 +54,7 @@ footer{
     justify-content: space-evenly;
     font-size: 80%;
     z-index: 800;
-    border: 1px solid red;
+   /* border: 1px solid red;*/
 }
 
 footer ul{
