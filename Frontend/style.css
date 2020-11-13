@@ -18,9 +18,9 @@ body{
 #sidebar {
     background-color: rgba(221, 221, 221, 0.74);
     border-radius: 0.5em;
-    width: 10vw;
-    height: 97vh;
-    top: 0.8vh;
+    width: 12vw;
+    height: 92vh;
+    top: 7vh;
     left: 0.5vw;
     position: absolute;
     z-index: 500;
@@ -50,7 +50,6 @@ button{
     margin-left: 1vw;
     margin-right: 1vw;
     margin-bottom: .25vh;
-    /*text-align: center;*/
 }
 
 header{
