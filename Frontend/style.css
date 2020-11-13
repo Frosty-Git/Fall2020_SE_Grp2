@@ -46,25 +46,27 @@ button{
 
 /* FOOTER */
 footer{
-    width: 99.9%;
+    width: 99%;
+    margin: auto;
     bottom: 0;
     display: flex;
     position: absolute;
+    justify-content: space-evenly;
     font-size: 80%;
     z-index: 800;
-   /* border: 1px solid red;*/
+    border: 1px solid red;
 }
 
 footer ul{
     /*background-color: burlywood;*/
-    padding: 1rem;
-    width: 100%;
-    text-align: center;
 }
 
 #statisticsBlock {
-   /* background-color: rgb(107, 189, 118);*/
-    flex-direction: column;
+    /*background-color: chartreuse;*/
+}
+
+tr td{
+    border-spacing: 15px;
 }
 
 .slidecontainer {
