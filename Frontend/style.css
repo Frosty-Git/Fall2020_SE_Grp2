@@ -98,8 +98,9 @@ tr td{
   .slider {
     -webkit-appearance: none;  /* Override default CSS styles */
     appearance: none;
-    width: 100%; /* Full-width */
-    height: 5%; /* Specified height */
+    width: 100vw; /* Full-width */
+    height: 15px; /* Specified height */
+    border-radius: 5px;
     background: #d3d3d3; /* Grey background */
     outline: none; /* Remove outline */
     opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
@@ -118,13 +119,15 @@ tr td{
     appearance: none;
     width: 25px; /* Set a specific slider handle width */
     height: 25px; /* Slider handle height */
-    background: #ff0000; /* Green background */
+    border-radius: 50%;
+    background: rgb(117, 207, 240, 1); /* Green background */
     cursor: pointer; /* Cursor on hover */
   }
   
   .slider::-moz-range-thumb {
     width: 25px; /* Set a specific slider handle width */
     height: 25px; /* Slider handle height */
+    border-radius: 50%;
     background: #ff0000; /* Green background */
     cursor: pointer; /* Cursor on hover */
   }
