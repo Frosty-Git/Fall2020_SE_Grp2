@@ -19,15 +19,8 @@
 </head>
 
 <body>
-    <header>
-        <div class="dateText" id="dateText">2020-1-21</div>
-        <div class="slidecontainer">
-            <input type="range" min="0" max="262" value="0" class="slider" id="myRange">
-        </div>
-    </header>
-
     <div id="mapid" ></div> <!--Leaflet Map-->
-    
+
     <aside id ="sidebar">
         <!--Buttons to control the data-->
         <div class="timeControls">
@@ -98,10 +91,15 @@
         </div>
     </aside>
    
+    <header>
+        <div class="dateText" id="dateText">2020-1-21</div>
+        <div class="slidecontainer">
+            <input type="range" min="0" max="262" value="0" class="slider" id="myRange">
+        </div>
+    </header>
+
     <footer>
-        <ul id="legend">
-            <li><h2>Legend</h2></li>
-        </ul>
+        <ul id="legend"><h2>Legend</h2></ul>
         <table id="statisticsBlock">
             <tr><th><h2>Statistic</h2></th></tr>
             <tr><th><h5 class="statCurrentState">USA</h4></th></tr>

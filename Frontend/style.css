@@ -11,18 +11,24 @@ body{
 }
 
 #mapid {
-    height: 80vh;
+    height: 90vh;
     position: relative;
     display: flex;
+}
+
+header{
+    position: absolute;
+    z-index: 2000;
 }
 
 #sidebar {
     background-color: rgba(221, 221, 221, 0.74);
     border-radius: 0.5em;
+    padding-top: 0.8vh;
     width: 10vw;
-    height: 92vh;
-    top: 50px;
-    left: 6px;
+    height: 97vh;
+    top: 0.8vh;
+    left: 0.5vw;
     position: absolute;
     z-index: 500;
 }
@@ -38,10 +44,16 @@ button{
 }
 
 .states{
-    font-size: 0.76vw;
-    margin: 0em 3em;
     color: #000000;
     cursor: pointer;
+}
+
+.states li{
+    font-size: 1.297vh;
+    margin: 0.345vh 1vw;
+    padding-block: 1;
+    /*background-color: aqua;*/
+    /*text-align: center;*/
 }
 
 /* FOOTER */
@@ -57,13 +69,13 @@ footer{
    /* border: 1px solid red;*/
 }
 
-footer ul{
-    /*background-color: burlywood;*/
+/*footer ul{
+    /*background-color: burlywood;
 }
 
 #statisticsBlock {
-    /*background-color: chartreuse;*/
-}
+    /*background-color: chartreuse;
+}*/
 
 tr td{
     border-spacing: 15px;
