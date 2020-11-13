@@ -17,15 +17,14 @@ body{
 
 #sidebar {
     background-color: rgba(221, 221, 221, 0.74);
-    border-radius: 0.5em;
     width: 12vw;
     height: 92vh;
-    top: 7vh;
-    left: 0.5vw;
+    top: 10vh;
     position: absolute;
     z-index: 500;
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
 }
 
 .timeControls {
@@ -68,7 +67,7 @@ header{
     -webkit-appearance: none;  /* Override default CSS styles */
     appearance: none;
     width: 100vw; /* Full-width */
-    height: 15px; /* Specified height */
+    height: 2.25vh; /* Specified height */
     border-radius: 5px;
     background: #d3d3d3; /* Grey background */
     outline: none; /* Remove outline */
@@ -86,26 +85,25 @@ header{
   .slider::-webkit-slider-thumb {
     -webkit-appearance: none; /* Override default look */
     appearance: none;
-    width: 25px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
+    width: 2vw; /* Set a specific slider handle width */
+    height: 2vw; /* Slider handle height */
     border-radius: 50%;
-    background: rgb(117, 207, 240, 1); /* Green background */
+    background: rgb(2, 63, 85); /* Green background */
     cursor: pointer; /* Cursor on hover */
   }
   
   .slider::-moz-range-thumb {
-    width: 25px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
+    width: 2vw; /* Set a specific slider handle width */
+    height: 2vw; /* Slider handle height */
     border-radius: 50%;
-    background: #00aeff;
+    background: rgb(2, 63, 85);
     cursor: pointer; /* Cursor on hover */
   }
   
-
 /* FOOTER */
 footer{
     width: 50%;
-    height: 20%;
+    height: 14%;
     right: 0;
     bottom: 0;
     display: flex;
