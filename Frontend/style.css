@@ -17,7 +17,7 @@ body{
 
 #sidebar {
     background-color: rgba(221, 221, 221, 0.74);
-    width: 12vw;
+    width: 16vw;
     height: 92vh;
     top: 10vh;
     position: absolute;
@@ -40,9 +40,8 @@ button{
 .states{
     color: #000000;
     font-weight: bold;
-    font-size: smaller;
+    font-size: 1vw;
     cursor: pointer;
-    flex: 0.98;
 }
 
 .states li{
@@ -102,10 +101,10 @@ header{
   
 /* FOOTER */
 footer{
-    width: 50%;
-    height: 14%;
-    right: 0;
-    bottom: 0;
+    width: 70%;
+    height: 10%;
+    left: 20vw;
+    bottom: 1vh;
     display: flex;
     position: absolute;
     justify-content: space-evenly;
@@ -113,21 +112,24 @@ footer{
     z-index: 500;
     border-radius: 0.5em;
     background-color: rgba(221, 221, 221, 0.74);
-    /*background-color: blueviolet;*/
+    /*background-color: blueviolet;
    /* border: 1px solid red;*/
 }
 
-footer ul{
-    /*background-color: burlywood;*/
+/* footer ul{
+    /*background-color: burlywood;
     margin: 1em;
 }
 
 #statisticsBlock {
-    /*background-color: chartreuse;*/
+    /*background-color: chartreuse;
     margin: 1em;
-    flex:.5
-}
+    flex:0.8;
+} 
 
 tr td{
-    border-spacing: 15px;
-}
+    background-color: aqua;
+    border-spacing: 15vw;
+    border-style: solid;
+    row-gap: 12vh;
+}*/
