@@ -102,15 +102,26 @@
         <ul id="legend">
             <li><h2>Legend</h2></li>
         </ul>
-        <ul id="statisticsBlock">
-            <li><h2>Statistic</h2>
-                <li><h4 class="statCurrentState">USA</h4></li>
-                <li><div>Total Covid Cases: </div><div class="statTotalCovid"></div></li>
-                <li><div>Average Median Income: </div><div class="statIncome"></div></li>
-                <li><div>Mean Cases/County:</div><div class="covidMean"></div></li>
-                <li><div>Correlation</div><div class="correlation"></div></li>
-            </li>
-        </ul>
+        <table id="statisticsBlock">
+            <tr><th>Statistic</th></tr>
+            <tr><td><h4 class="statCurrentState">USA</h4></td></tr>
+            <tr>
+                <td>Total Covid Cases: </td>
+                <td id="tot" class="statTotalCovid"></td>
+            </tr>
+            <tr>
+                <td>Average Median Income: </td>
+                <td class="statIncome"></td>
+            </tr>
+            <tr>
+                <td>Mean Cases/County:</td>
+                <td class="covidMean"></td>
+            </tr>
+            <tr>
+                <td>Correlation</td>
+                <td class="correlation"></td>
+            </tr>
+        </table>
     </footer>
 
     <!--Temporary dumby data for testing-->
