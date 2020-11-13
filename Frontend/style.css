@@ -55,39 +55,9 @@ button{
 
 header{
     position: absolute;
-    z-index: 8000;
-}
-
-/* FOOTER */
-footer{
-    width: 50%;
-    height: 20%;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    position: absolute;
-    justify-content: space-evenly;
-    font-size: 80%;
     z-index: 500;
-    border-radius: 0.5em;
-    background-color: rgba(221, 221, 221, 0.74);
-    /*background-color: blueviolet;*/
-   /* border: 1px solid red;*/
-}
-
-footer ul{
-    /*background-color: burlywood;*
-    margin: 1em;
-}
-
-#statisticsBlock {
-    /*background-color: chartreuse;*/
-    margin: 1em;
-    flex:.5
-}
-
-tr td{
-    border-spacing: 15px;
+    text-align: center;
+    background-color: rgba(117, 207, 240, 0.808);
 }
 
 .slidecontainer {
@@ -128,6 +98,39 @@ tr td{
     width: 25px; /* Set a specific slider handle width */
     height: 25px; /* Slider handle height */
     border-radius: 50%;
-    background: #ff0000; /* Green background */
+    background: #00aeff;
     cursor: pointer; /* Cursor on hover */
   }
+  
+
+/* FOOTER */
+footer{
+    width: 50%;
+    height: 20%;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    position: absolute;
+    justify-content: space-evenly;
+    font-size: 80%;
+    z-index: 500;
+    border-radius: 0.5em;
+    background-color: rgba(221, 221, 221, 0.74);
+    /*background-color: blueviolet;*/
+   /* border: 1px solid red;*/
+}
+
+footer ul{
+    /*background-color: burlywood;*/
+    margin: 1em;
+}
+
+#statisticsBlock {
+    /*background-color: chartreuse;*/
+    margin: 1em;
+    flex:.5
+}
+
+tr td{
+    border-spacing: 15px;
+}
