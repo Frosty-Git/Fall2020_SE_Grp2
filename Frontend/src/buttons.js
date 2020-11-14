@@ -148,6 +148,7 @@ function updateStatisticsBox(total, income, mean, correlation) {
 
 // Update the current slider value (each time you drag the slider handle)
 slider.onchange = function() {
+    
     theBigBrainAlgorithm(this.value);
     dateText.innerHTML = dateStringFromMilli(Date.parse(date));
     sendDate();
@@ -162,8 +163,8 @@ slider.onchange = function() {
 
 //Put algorithm here...
 function theBigBrainAlgorithm(sliderValue) {
-    const START_MIL_SEC = 1581656400000;
-    const MIL_SEC_DAY = 86400000;
+    const START_MIL_SEC = Date.parse(FIRST_DATE);       //first date in milliseconds
+    const MIL_SEC_DAY = 86400000;                       //milliseconds of a single day
 
     date = new Date(sliderValue * MIL_SEC_DAY + START_MIL_SEC);
 
