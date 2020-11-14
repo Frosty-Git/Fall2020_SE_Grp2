@@ -5,7 +5,43 @@ var slider = document.getElementById("myRange");
 //Current Date Text
 var dateText = document.getElementById("dateText");
 
+// function pressPlay() {
+//     playClicked = true;
+//     //console.log(date);
+//     var milliDate = Number(Date.parse(date)); //date in millisecond format, 86400000 is one day's worth of time
+//     console.log(milliDate);
+//     endDateMilli = Number(Date.parse(END_DATE)); //end date in millisecond form
+
+//     paused = false;
+//     const sleepNow = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
+
+//     async function delay() {
+//         for (milliDate; !paused && milliDate <= endDateMilli; (milliDate += 86400000)) {
+//             await sleepNow(1000)
+//              if(paused)
+//             {
+//                 break;
+//             }
+// //             var milliAsDate = new Date(milliDate);
+//             var dateString = dateStringFromMilli(milliAsDate);  //date string needs single quotes for query
+//             console.log(dateString);
+//             date = new Date(milliAsDate);
+//             sendDate();
+//             slider.value++;     //Update the date slider bar.
+//             updateDateText(dateString);  //update currentDate in html (not working in time needs to wait for date to update fully)
+//             if(current_state != 'USA') {
+//                 setCurrentState(current_state);     //update the stats box with the same currently selected state, but with new stats for the new date (not working, has to wait for sendState)
+//             }
+//             else {
+//                 setCurrentStateUsa();
+//             }
+//         }
+//     }
+//     delay()
+// }
+
 function pressPlay() {
+    playClicked = true;
     //console.log(date);
     var milliDate = Number(Date.parse(date)); //date in millisecond format, 86400000 is one day's worth of time
     console.log(milliDate);
@@ -15,8 +51,13 @@ function pressPlay() {
     const sleepNow = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
 
     async function delay() {
-        for (milliDate; !paused && milliDate <= endDateMilli; (milliDate += 86400000)) {
+        while(milliDate <= endDateMilli) {
             await sleepNow(1000)
+            if(paused)
+            {
+                console.log("PAUSED WHILE IN LOOP")
+                break;
+            }
             var milliAsDate = new Date(milliDate);
             var dateString = dateStringFromMilli(milliAsDate);  //date string needs single quotes for query
             console.log(dateString);
@@ -30,6 +71,7 @@ function pressPlay() {
             else {
                 setCurrentStateUsa();
             }
+            milliDate += 86400000;
         }
     }
     delay()
@@ -54,6 +96,7 @@ function updateDateText(dateText) {
  * Stops time from moving forward.
  */
 function pressPause() {
+    playClicked = false;
     paused = true;
     //console.log(date);
 }
@@ -67,10 +110,10 @@ function pressStop() {
     resetDate();
     updateDateText(FIRST_DATE_STRING);
     console.log(date);
-    covid.resetStyle();
     //Update the date slider bar.
     slider.value = 0;
     dateText.innerHTML = dateStringFromMilli(Date.parse(date));
+    sendDate();     //reset the map back to initial state of first recorded date
 }
 
 /**
@@ -148,7 +191,10 @@ function updateStatisticsBox(total, income, mean, correlation) {
 
 // Update the current slider value (each time you drag the slider handle)
 slider.onchange = function() {
-    
+    if(playClicked == true)
+    {
+        pressPause();   //stop the loop if it is currently playing
+    }
     theBigBrainAlgorithm(this.value);
     dateText.innerHTML = dateStringFromMilli(Date.parse(date));
     sendDate();

@@ -9,6 +9,7 @@ const FIRST_DATE = new Date(2020, 0, 21); //initial date set to February 14th, n
 const END_DATE = new Date(2020, 10, 02); //november 2, 2020 
 var date = FIRST_DATE;
 var current_state = 'USA';
+var playClicked = false;    //The play button is currently running
 var paused = false;
 //const url = 'http://localhost:5000/api/states.geojson';
 const url = 'http://localhost:5000/api/USA_Counties.geojson';
