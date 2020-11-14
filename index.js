@@ -29,7 +29,7 @@ app.use(cors());
 //Allows express app to be able to interact with json data
 app.use(express.json());
 //The current date for database queries
-var currentDate = '2020-10-2';
+var currentDate = '2020-1-21';
 
 //-----------------End Express Setup---------------------------------
 
