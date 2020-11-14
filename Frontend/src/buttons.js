@@ -41,45 +41,50 @@ var dateText = document.getElementById("dateText");
 // }
 
 function pressPlay() {
-    playClicked = true;
-    //console.log(date);
-    var milliDate = Number(Date.parse(date)); //date in millisecond format, 86400000 is one day's worth of time
-    //console.log(milliDate);
-    endDateMilli = Number(Date.parse(END_DATE)); //end date in millisecond form
+    if(playClicked == false) {
+        playClicked = true;
+        //console.log(date);
+        var milliDate = Number(Date.parse(date)); //date in millisecond format, 86400000 is one day's worth of time
+        //console.log(milliDate);
+        endDateMilli = Number(Date.parse(END_DATE)); //end date in millisecond form
 
-    paused = false;
-    const sleepNow = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
+        paused = false;
+        const sleepNow = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
 
-    async function delay() {
-        while(!paused && milliDate <= endDateMilli) {
-            await sleepNow(1000)
-            if(paused)
-            {
-                break;
+        async function delay() {
+            while(!paused && milliDate <= endDateMilli) {
+                await sleepNow(1000)
+                if(paused)
+                {
+                    break;
+                }
+                var milliAsDate = new Date(milliDate);
+                var dateString = dateStringFromMilli(milliAsDate);  //date string needs single quotes for query
+                console.log(dateString);
+                
+                sendDate();
+                date = new Date(milliAsDate);
+                slider.value++;     //Update the date slider bar.
+                updateDateText(dateString);  //update currentDate in html (not working in time needs to wait for date to update fully)
+                
+                milliDate += 86400000;
             }
-            var milliAsDate = new Date(milliDate);
-            var dateString = dateStringFromMilli(milliAsDate);  //date string needs single quotes for query
-            console.log(dateString);
-            date = new Date(milliAsDate);
-            sendDate();
-            slider.value++;     //Update the date slider bar.
-            updateDateText(dateString);  //update currentDate in html (not working in time needs to wait for date to update fully)
-            
-            milliDate += 86400000;
         }
+        delay()
     }
-    delay()
+    
+    
 }
 
-function dateStringFromMilli(dateMilli) {
-    var dateNew = new Date(dateMilli);
-    var curr_month = dateNew.getMonth() + 1; //Months are zero based
-    var curr_date = dateNew.getDate();
-    var curr_year = dateNew.getFullYear();
-    var dateString = curr_year + "-" + curr_month + "-" + curr_date;
-    //console.log(dateString);
-    return dateString;
-}
+// function dateStringFromMilli(dateMilli) {
+//     var dateNew = new Date(dateMilli);
+//     var curr_month = dateNew.getMonth() + 1; //Months are zero based
+//     var curr_date = dateNew.getDate();
+//     var curr_year = dateNew.getFullYear();
+//     var dateString = curr_year + "-" + curr_month + "-" + curr_date;
+//     //console.log(dateString);
+//     return dateString;
+// }
 
 function updateDateText(dateText) {
     document.querySelector(".dateText").innerHTML = dateText;
@@ -102,6 +107,7 @@ function pressPause() {
 function pressStop() {
     pressPause();
     resetDate();
+    resetUSA();
     sendDate();     //reset the map back to initial state of first recorded date
     updateDateText(FIRST_DATE_STRING);
     //console.log(date);
@@ -115,6 +121,7 @@ function pressStop() {
  */
 async function resetDate() {
     date = FIRST_DATE;
+    // date = new Date(2020,9,15);
 }
 
 /**
