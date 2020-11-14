@@ -162,6 +162,7 @@ function zoomToState(stateIndex, zoomLevel) {
  * @param {*} stateName The new current state being selected.
  */
 function setCurrentState(stateName) {
+    stateChanged = true;
     current_state = stateName;
     outlineState();
     var total = getSingleCovid();   //getSingleCovid returns an array containing total covid cases for a state (array[0]) and the number of counties (array[1])
@@ -193,12 +194,12 @@ slider.onchange = function() {
     dateText.innerHTML = dateStringFromMilli(Date.parse(date));
     sendDate();
     
-    if(current_state != 'USA') {
-        setCurrentState(current_state);     //update the stats box with the same currently selected state, but with new stats for the new date (not working, has to wait for sendState)
-    }
-    else {
-        setCurrentStateUsa();
-    }
+    // if(current_state != 'USA') {
+    //     setCurrentState(current_state);     //update the stats box with the same currently selected state, but with new stats for the new date (not working, has to wait for sendState)
+    // }
+    // else {
+    //     setCurrentStateUsa();
+    // }
 }
 
 //Put algorithm here...
@@ -270,8 +271,10 @@ function changeMapLayers(geojson) {
 }
 
 function outlineState() {
-    removeCurrentOutline();
-
+    if(stateChanged == true) {
+        removeCurrentOutline();
+    }
+    stateChanged = false;
     if(current_state != 'USA') {
         var geoFeatures = geoJson.features;
         var index = 0;

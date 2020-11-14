@@ -14,6 +14,7 @@ var paused = false;
 //const url = 'http://localhost:5000/api/states.geojson';
 const url = 'http://localhost:5000/api/USA_Counties.geojson';
 const dateURL = 'http://localhost:5000/date-input';
+var stateChanged = false;
 
 /* These two shouldn't be here... They are here to make stats work */
 //var DATA_LENGTH = 0;
