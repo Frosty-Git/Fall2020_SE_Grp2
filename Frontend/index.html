@@ -20,22 +20,23 @@
 
 <body>
     <header>
-        <div class="dateText" id="dateText">2020-1-21</div>
+
+        <div class="title"><h2>Covid 19 and Income in America</h2></div>
+        <div class="dateText" id="dateText"><h5>2020-1-21</h5></div>
+
         <div class="slidecontainer">
             <input type="range" min="0" max="286" value="0" class="slider" id="myRange">
         </div>
-    </header>
-
-    <div id="mapid" ></div> <!--Leaflet Map-->
+    </header>  
     
+    <div id="mapid" >    
+
     <aside id ="sidebar">
         <!--Buttons to control the data-->
         <div class="timeControls">
-            <ul>
-                <button class="btn-play" onclick="pressPlay()">play</button>
-                <button class="btn-pause" onclick="pressPause()">pause</button>
-                <button class="btn-stop" onclick="pressStop()" >stop</button>
-            </ul>
+            <button class="btn-play" onclick="pressPlay()">play</button>
+            <button class="btn-pause" onclick="pressPause()">pause</button>
+            <button class="btn-stop" onclick="pressStop()" >reset</button>
         </div>
 
         <!--List of States-->
@@ -98,24 +99,32 @@
                 <li onclick="zoomToState(50,7); setCurrentState('Wyoming')">Wyoming</li>  
             </ul>
         </div>
-    </aside>
-   
+    </aside>  
+    
     <footer>
 
-        <ul id="legend">
-            <li><h2>Legend</h2></li>
-        </ul>
-        <ul id="statisticsBlock">
-            <li><h2>Statistic</h2>
-                <li><h3 class="statCurrentState">USA</h3></li>
-                <li><div>Total Covid Cases: </div><div class="statTotalCovid"></div></li>
-                <li><div>Average Median Income: </div><div class="statIncome"></div></li>
-                <li><div>Mean Cases/County:</div><div class="covidMean"></div></li>
-                <li><div>Correlation</div><div class="correlation"></div></li>
-            </li>
-        </ul>
+        <ul id="legend"><h2>Legend</h2></ul>
+        <table id="statisticsBlock">
+            <tr><th colspan="4"><h2>Statistic</h2></th></tr>
+            <tr><th colspan="4"><h5 class="statCurrentState">USA</h4></th></tr>
+            <tr>
+                <td>Total Covid Cases</td>
+                <td>Average Median Income</td>
+                <td>Mean Cases/County</td>
+                <td>Correlation</td>
+                
+            </tr>
+            <tr>
+                <td class="statTotalCovid"></td>
+                <td class="statIncome"></td>
+                <td class="covidMean"></td>
+                <td class="correlation"></td>
+            </tr>
+        </table>
 
     </footer>
+
+</div> <!--Leaflet Map-->
 
     <!--Temporary dumby data for testing-->
     <script src="src/NJ_Counties.js"></script>
