@@ -44,18 +44,17 @@ function pressPlay() {
     playClicked = true;
     //console.log(date);
     var milliDate = Number(Date.parse(date)); //date in millisecond format, 86400000 is one day's worth of time
-    console.log(milliDate);
+    //console.log(milliDate);
     endDateMilli = Number(Date.parse(END_DATE)); //end date in millisecond form
 
     paused = false;
     const sleepNow = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
 
     async function delay() {
-        while(milliDate <= endDateMilli) {
+        while(!paused && milliDate <= endDateMilli) {
             await sleepNow(1000)
             if(paused)
             {
-                console.log("PAUSED WHILE IN LOOP")
                 break;
             }
             var milliAsDate = new Date(milliDate);
@@ -65,12 +64,7 @@ function pressPlay() {
             sendDate();
             slider.value++;     //Update the date slider bar.
             updateDateText(dateString);  //update currentDate in html (not working in time needs to wait for date to update fully)
-            if(current_state != 'USA') {
-                setCurrentState(current_state);     //update the stats box with the same currently selected state, but with new stats for the new date (not working, has to wait for sendState)
-            }
-            else {
-                setCurrentStateUsa();
-            }
+            
             milliDate += 86400000;
         }
     }
@@ -108,12 +102,12 @@ function pressPause() {
 function pressStop() {
     pressPause();
     resetDate();
+    sendDate();     //reset the map back to initial state of first recorded date
     updateDateText(FIRST_DATE_STRING);
-    console.log(date);
+    //console.log(date);
     //Update the date slider bar.
     slider.value = 0;
-    dateText.innerHTML = dateStringFromMilli(Date.parse(date));
-    sendDate();     //reset the map back to initial state of first recorded date
+    //dateText.innerHTML = dateStringFromMilli(Date.parse(date));
 }
 
 /**
@@ -137,11 +131,11 @@ function resetUSA() {
 function setCurrentStateUsa() {
     current_state = 'USA';
     var total = getUsaCovid();   //getSingleCovid returns an array containing total covid cases for a state (array[0]) and the number of counties (array[1])
-    console.log(total[0]);
+    //console.log(total[0]);
     var income = getUsaAvgMedIncome();   
     var covidMean =  total[0]/total[1];  //total cases over all counties divided by number of counties
-    console.log("income length: " + usaIncome.length);
-    console.log("cases length: " + usaCases.length);
+    //console.log("income length: " + usaIncome.length);
+    //console.log("cases length: " + usaCases.length);
     var correlation = getPearsonCorrelation(usaIncome, usaCases);
     updateStatisticsBox(total[0], income, covidMean, correlation);
 }
@@ -223,7 +217,8 @@ function theBigBrainAlgorithm(sliderValue) {
 //add day 86400000
 
 //Send current date to node.js
-function sendDate(){
+function sendDate() {
+    console.log("Sending date for new geoJson");
     const dateString = dateStringFromMilli(Date.parse(date));
         const data = { dateString }
         const options = { 
@@ -238,14 +233,20 @@ function sendDate(){
             response.json().then(res => {
                 try{
                     console.log("Successfully converted to geojson.")
-                    console.log(res);
+                    //console.log(res);
                     geoJson = res;
                     changeMapLayers(res);
+                    if(current_state != 'USA') {
+                        setCurrentState(current_state);     //update the stats box with the same currently selected state, but with new stats for the new date (not working, has to wait for sendState)
+                    }
+                    else {
+                        setCurrentStateUsa();
+                    }
                     //Update statistics here
                 }
                 catch (error) {
                     console.log("ERROR: failed to convert json")
-                    console.log(error);
+                    //console.log(error);
                 }
 
             })
@@ -283,7 +284,7 @@ function outlineState() {
                 counter++;
             }
         }
-        console.log(stateGeojsons.length)
+        //console.log(stateGeojsons.length)
         index = 0;
         for(; index < counter; index++)
         {

@@ -93,7 +93,7 @@ function getPearsonCorrelation(x, y) {
     }
 
     console.log("Number of counties:" + shortestArrayLength);
-  
+    
     var xy = [];
     var x2 = [];
     var y2 = [];
