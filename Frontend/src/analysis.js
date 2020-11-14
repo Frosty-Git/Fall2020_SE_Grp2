@@ -92,7 +92,7 @@ function getPearsonCorrelation(x, y) {
         console.error('y has more items in it, the last ' + (y.length - shortestArrayLength) + ' item(s) will be ignored');
     }
 
-    console.log("Number of counties:" + shortestArrayLength);
+    //console.log("Number of counties:" + shortestArrayLength);
     
     var xy = [];
     var x2 = [];
