@@ -6,14 +6,6 @@
 // setupMap();
 
 
-
-
-var covid;
-var income;
-let layerControls;
-let overlayMaps;
-
-
 console.log('Fetching data');
 // const response = await fetch(url);
 // geoJson = await response.json();
@@ -73,25 +65,10 @@ const dateString = dateStringFromMilli(Date.parse(date));
                 L.control.zoom({ position: 'topright' }).addTo(mymap);
                 /* Leaflet Scale Bar */
                 L.control.scale({ position: 'topright' }).addTo(mymap);
+                setCurrentStateUsa();
             });
         });
         
 
 console.log('Displaying data');
-        
-
-
-
-
-
-
-function dateStringFromMilli(dateMilli) {
-    var dateNew = new Date(dateMilli);
-    var curr_month = dateNew.getMonth() + 1; //Months are zero based
-    var curr_date = dateNew.getDate();
-    var curr_year = dateNew.getFullYear();
-    var dateString = curr_year + "-" + curr_month + "-" + curr_date;
-    //console.log(dateString);
-    return dateString;
-}
 

@@ -1,4 +1,3 @@
-
 const FIRST_DATE_STRING = dateStringFromMilli(Date.parse(FIRST_DATE));
 //Date Slider
 var slider = document.getElementById("myRange");
@@ -76,15 +75,15 @@ function pressPlay() {
     
 }
 
-// function dateStringFromMilli(dateMilli) {
-//     var dateNew = new Date(dateMilli);
-//     var curr_month = dateNew.getMonth() + 1; //Months are zero based
-//     var curr_date = dateNew.getDate();
-//     var curr_year = dateNew.getFullYear();
-//     var dateString = curr_year + "-" + curr_month + "-" + curr_date;
-//     //console.log(dateString);
-//     return dateString;
-// }
+function dateStringFromMilli(dateMilli) {
+    var dateNew = new Date(dateMilli);
+    var curr_month = dateNew.getMonth() + 1; //Months are zero based
+    var curr_date = dateNew.getDate();
+    var curr_year = dateNew.getFullYear();
+    var dateString = curr_year + "-" + curr_month + "-" + curr_date;
+    //console.log(dateString);
+    return dateString;
+}
 
 function updateDateText(dateText) {
     document.querySelector(".dateText").innerHTML = dateText;
@@ -107,7 +106,7 @@ function pressPause() {
 function pressStop() {
     pressPause();
     resetDate();
-    resetUSA();
+    resetUSA();     //resets zoom back to USA level and removes current state outline
     sendDate();     //reset the map back to initial state of first recorded date
     updateDateText(FIRST_DATE_STRING);
     //console.log(date);

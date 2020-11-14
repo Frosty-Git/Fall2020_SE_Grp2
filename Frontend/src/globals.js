@@ -32,3 +32,6 @@ var countyCase = [];
 var usaIncome = [];
 var usaCases = [];
 
+//Used in main
+let layerControls;
+let overlayMaps;
