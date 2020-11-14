@@ -55,6 +55,7 @@ class DbConnection {
   
         //console.log(results);
         
+        client.end();
         return results;
     }
 
