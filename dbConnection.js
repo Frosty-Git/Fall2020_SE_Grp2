@@ -34,7 +34,12 @@ class DbConnection {
         
 
         //NEW QUERY
-        var qs = "SELECT row_to_json(fc) FROM ( SELECT 'FeatureCollection' As type, array_to_json(array_agg(f)) As features FROM (SELECT 'Feature' As type, ST_AsGeoJSON(lg.geom)::json As geometry, row_to_json((\"NAME\", \"FIPS\", Med_Income, cases, date, \"STATE_NAME\")) As properties FROM \"DB_Fetch\" As lg WHERE date = $1) As f) As fc";
+        
+        /* Query without zeroes for no data dates */
+        // var qs = "SELECT row_to_json(fc) FROM ( SELECT 'FeatureCollection' As type, array_to_json(array_agg(f)) As features FROM (SELECT 'Feature' As type, ST_AsGeoJSON(lg.geom)::json As geometry, row_to_json((\"NAME\", \"FIPS\", Med_Income, cases, date, \"STATE_NAME\")) As properties FROM \"DB_Fetch\" As lg WHERE date = $1) As f) As fc";
+        
+        /* Query with zeroes for no data dates */
+        var qs = "SELECT row_to_json(fc) FROM ( SELECT 'FeatureCollection' As type, array_to_json(array_agg(f)) As features FROM (SELECT 'Feature' As type, ST_AsGeoJSON(lg.geom)::json As geometry, row_to_json((\"NAME\", \"FIPS\", Med_Income, cases, date, \"STATE_NAME\")) As properties FROM (Select uc.\"FIPS\", coalesce(st.date, $1) as date, coalesce(st.cases,0) as cases, uc.med_income, uc.\"NAME\", uc.\"STATE_NAME\", uc,geom from(select c19.cases, c19.date, c19.\"FIPS\" from public.\"covid\" as c19 where c19.date = $1)st right join public.\"USA_Counties\" as uc on uc.\"FIPS\" = st.\"FIPS\")  As lg ) As f) As fc";
         //------------Cleanup Query Result---------------------------
         var values = [date];
         var results = await client.query(qs, values);
