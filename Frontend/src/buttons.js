@@ -71,8 +71,6 @@ function pressPlay() {
         }
         delay()
     }
-    
-    
 }
 
 function dateStringFromMilli(dateMilli) {
@@ -249,11 +247,9 @@ function sendDate() {
                     else {
                         setCurrentStateUsa();
                     }
-                    //Update statistics here
                 }
                 catch (error) {
                     console.log("ERROR: failed to convert json")
-                    //console.log(error);
                 }
 
             })
@@ -268,12 +264,12 @@ function changeMapLayers(geojson) {
 
     layerControls.removeLayer(covid);
     covid = L.geoJson(geojson, {style: styleCovid});
-    income = L.geoJson(geojson, {style: styleIncome});
 
     layerControls.addBaseLayer(covid, "Covid");
 
-    
-    mymap.addLayer(covid);
+    if(currentLayerID != 3165){  //income is not currently selected, 3165 is income layer's id
+        mymap.addLayer(covid);
+    }
 }
 
 function outlineState() {

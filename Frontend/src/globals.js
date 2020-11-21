@@ -35,3 +35,5 @@ var usaCases = [];
 //Used in main
 let layerControls;
 let overlayMaps;
+let currentLayerID; //current map layer ID, note income is #3165
+
