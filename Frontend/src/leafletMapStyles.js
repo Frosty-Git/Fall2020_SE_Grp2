@@ -6,24 +6,24 @@
 
 function getCovidColor(a) {
     // 6 classes natural breaks, yellow hue
-    return a > 195740  ? '#bd0026' :    //uppermost range is 310595 
-           a > 104909  ? '#f03b20' :
-           a > 45451   ? '#fd8d3c' :
-           a > 19272   ? '#feb24c' :
-           a > 6167    ? '#fed976' :
-           a > 0       ? '#ffffb2' :
-           a = 0       ? '#a3a399' :
-                         '#a3a399' ;
+    // return a > 195740  ? '#bd0026' :    //uppermost range is 310595 
+    //        a > 104909  ? '#f03b20' :
+    //        a > 45451   ? '#fd8d3c' :
+    //        a > 19272   ? '#feb24c' :
+    //        a > 6167    ? '#fed976' :
+    //        a > 0       ? '#ffffb2' :
+    //        a = 0       ? '#a3a399' :
+    //                      '#a3a399' ;
     
     //6 classes natural breaks, red hue
-    // return a > 195740  ? '#a50f15' :    //uppermost range is 310595 
-    //        a > 104909  ? '#de2d26' :
-    //        a > 45451   ? '#fb6a4a' :
-    //        a > 19272   ? '#fc9272' :
-    //        a > 6167    ? '#fcbba1' :
-    //        a > 0       ? '#fee5d9' :
-    //        a = 0       ? '#a3a3a3' :
-    //                      '#a3a3a3' ;
+    return a > 195740  ? '#a50f15' :    //uppermost range is 310595 
+           a > 104909  ? '#de2d26' :
+           a > 45451   ? '#fb6a4a' :
+           a > 19272   ? '#fc9272' :
+           a > 6167    ? '#fcbba1' :
+           a > 0       ? '#fee5d9' :
+           a = 0       ? '#a3a3a3' :
+                         '#a3a3a3' ;
 
     //0 color gray for yellow hue: #a3a399, 0 green color: #8cbf84
     //0 color gray for red hue: #a3a3a3, 0 dark green color #799170
