@@ -18,8 +18,8 @@ body{
 #sidebar {
     background-color: rgba(221, 221, 221, 0.74);
     width: 16vw;
-    height: 89vh;
-    top: 10vh;
+    height: 90vh;
+    bottom: 0vh;
     position: absolute;
     z-index: 500;
     display: flex;
@@ -104,7 +104,7 @@ footer{
     width: 70%;
     height: 10%;
     left: 20vw;
-    bottom: 1vh;
+    bottom: 0vh;
     display: flex;
     position: absolute;
     justify-content: space-evenly;
