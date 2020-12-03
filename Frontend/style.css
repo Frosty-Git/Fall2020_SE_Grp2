@@ -16,7 +16,8 @@ body{
 }
 
 #sidebar {
-    background-color: rgba(221, 221, 221, 0.74);
+    border: 1px solid black;
+    background-color: rgba(221, 221, 221, 0.9);
     width: 16vw;
     height: 90vh;
     bottom: 0vh;
@@ -45,6 +46,7 @@ button{
 }
 
 .states li{
+    border: 1px solid black;
     margin-left: 1vw;
     margin-right: 1vw;
     margin-bottom: .25vh;
@@ -63,6 +65,7 @@ header{
   
   /* The slider itself */
   .slider {
+    border: 1px solid black;
     -webkit-appearance: none;  /* Override default CSS styles */
     appearance: none;
     width: 100vw; /* Full-width */
@@ -101,20 +104,66 @@ header{
   
 /* FOOTER */
 footer{
+    border: 1px solid black;
     width: 70%;
-    height: 10%;
+    height: 27%;
     left: 20vw;
     bottom: 0vh;
     display: flex;
     position: absolute;
     justify-content: space-evenly;
-    font-size: 80%;
+    font-size: 110%;
     z-index: 500;
     border-radius: 0.5em;
-    background-color: rgba(221, 221, 221, 0.74);
+    background-color: rgba(221, 221, 221, 0.90);
     /*background-color: blueviolet;
    /* border: 1px solid red;*/
 }
+
+table, th, td{
+        border: 1px solid black; 
+        position: center; 
+        /* font-size: 110%; */
+}
+
+/*ul, h2{
+    /* border: 1px solid black; 
+}
+
+
+#legend{
+
+}*/
+
+#chart-legend {
+    width:200px;
+    padding:10px;
+    border:black 1px solid;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+}
+
+.legend-value {
+    margin-bottom:15px;
+    display:flex;
+    align-items:center;
+}
+
+.legend-block {
+    min-width:40px;
+    height:20px;
+    margin-right:10px;
+    border:#bbb solid 1px;
+    background-color:#D3D3D3;
+}
+
+/* .remove-btn { */
+    /* height:20px; */
+    /* min-width:40px; */
+    /* margin-right:10px;
+}*/
+
+
 
 /* footer ul{
     /*background-color: burlywood;
