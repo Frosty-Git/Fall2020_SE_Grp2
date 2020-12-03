@@ -13,7 +13,7 @@ body{
 }
 
 #mapid {
-    height: 92.2vh;
+    height: 92vh;
     position: relative;
 }
 
@@ -183,10 +183,9 @@ footer{
     width: 70%;
     height: 27%;
     left: 20vw;
-    bottom: 0vh;
+    bottom: 3vh;
     display: flex;
     position: absolute;
-    justify-content: space-evenly;
     font-size: 150%;
     z-index: 500;
     border-radius: 0.5em;
@@ -213,7 +212,6 @@ table{
         font-family: 'Arial Narrow','Franklin Gothic Medium', sans-serif;
         font-weight: bold;
         font-size: 16px;
-        /* font-size: 110%; */
 }
 
 .statCurrentState{
