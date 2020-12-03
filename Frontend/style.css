@@ -8,47 +8,8 @@ body{
     background: rgb(117, 207, 240, 1);
     color: black;
     font-family: Arial, "Helvetica Neue", sans-serif;
-}
-
-#mapid {
-    height: 91vh;
-    position: relative;
-}
-
-#sidebar {
-    /* border: 1px solid black; */
-    background-color: rgba(221, 221, 221, 0.9);
-    width: 16%;
-    height: 100%;
-    bottom: 0vh;
-    position: absolute;
-    z-index: 500;
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
-}
-
-.timeControls {
-    width: 80%;
-    margin: auto;
-}
-
-button{
-    margin: 0.3vw;
-    padding: 0.15em;
-}
-
-.states{
-    color: #000000;
-    font-weight: bold;
-    font-size: 1vw;
-    cursor: pointer;
-}
-
-.states li{
-    margin-left: 1vw;
-    margin-right: 1vw;
-    margin-bottom: .25vh;
 }
 
 header{
@@ -98,6 +59,46 @@ header{
     background: rgb(2, 63, 85);
     cursor: pointer; /* Cursor on hover */
   }
+
+#mapid {
+    height: 92.8vh;
+    position: relative;
+}
+
+#sidebar {
+    /* border: 1px solid black; */
+    background-color: rgba(221, 221, 221, 0.9);
+    width: 16%;
+    height: 100%;
+    position: absolute;
+    z-index: 500;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.timeControls {
+    width: 80%;
+    margin: auto;
+}
+
+button{
+    margin: 0.3vw;
+    padding: 0.15em;
+}
+
+.states{
+    color: #000000;
+    font-weight: bold;
+    font-size: 1vw;
+    cursor: pointer;
+}
+
+.states li{
+    margin-left: 1vw;
+    margin-right: 1vw;
+    margin-bottom: .25vh;
+}
   
 /* FOOTER */
 footer{
@@ -109,7 +110,7 @@ footer{
     display: flex;
     position: absolute;
     justify-content: space-evenly;
-    font-size: 110%;
+    font-size: 150%;
     z-index: 500;
     border-radius: 0.5em;
     background-color: rgba(221, 221, 221, 0.90);
@@ -117,11 +118,11 @@ footer{
    /* border: 1px solid red;*/
 }
 
-/* table, th, td{ 
-        
-        position: center; 
-        /* font-size: 110%; 
-} */
+table{ 
+    position: center; 
+    border-collapse: collapse;
+    /* font-size: 110%; */
+}
 
 /*ul, h2{
     /* border: 1px solid black; 
