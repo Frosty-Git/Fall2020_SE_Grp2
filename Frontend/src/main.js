@@ -46,8 +46,8 @@ const dateString = dateStringFromMilli(Date.parse(date));
                     maxBounds: L.latLngBounds(L.latLng(73.65, -180.00), L.latLng(10.50, -50.11)),
                     layers: [covid],
                     zoomControl: false
-                }).setView([39.056882, -98.407468], 5);
-
+                }).setView([36.798352, -104.633782], 5);
+                //setView([39.056882, -98.407468], 5);
                 osm.addTo(mymap);
                 /* End Create Leaflet Map */
 
