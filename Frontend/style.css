@@ -238,10 +238,10 @@ ul, h2{
     width:200px;
     padding:10px;
     border:black 1px solid;
-    font-family: 'Arial Narrow','Franklin Gothic Medium', sans-serif;
     background-color:#D3D3D3;
     border-radius: 4px;
     opacity: 90%;
+    font-family: 'Arial Narrow','Franklin Gothic Medium', sans-serif;
     font-weight: bold;
     font-size: 14px;
 }
