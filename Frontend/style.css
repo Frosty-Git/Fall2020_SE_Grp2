@@ -13,16 +13,15 @@ body{
 }
 
 #mapid {
-    height: 100vh;
+    height: 92.2vh;
     position: relative;
 }
 
 #sidebar {
     border: 1px solid black;
     background-color: rgba(221, 221, 221, 0.9);
-    width: 16vw;
-    height: 89vh;
-    top: 10vh;
+    width: 16%;
+    height: 100%;
     position: absolute;
     z-index: 500;
     display: flex;
