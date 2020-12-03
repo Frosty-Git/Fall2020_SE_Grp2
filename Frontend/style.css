@@ -84,7 +84,7 @@ header{
     border: 1px solid black;
     -webkit-appearance: none;  /* Override default CSS styles */
     appearance: none;
-    width: 100vw; /* Full-width */
+    width: 99.8%; /* Full-width */
     height: 2.25vh; /* Specified height */
     border-radius: 5px;
     background: #d3d3d3; /* Grey background */
@@ -172,10 +172,11 @@ footer{
     width: 70%;
     height: 27%;
     left: 20vw;
-    bottom: 2vh;
+    bottom: 0vh;
     display: flex;
     position: absolute;
-    font-size: 110%;
+    justify-content: space-evenly;
+    font-size: 150%;
     z-index: 500;
     border-radius: 0.5em;
     /* border: 1px solid black; 
@@ -224,7 +225,7 @@ ul, h2{
 
 #legend{
 
-}
+}*/
 
 .panel-body {
     background-color: rgba(221, 221, 221, 0.90);
