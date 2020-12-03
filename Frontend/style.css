@@ -233,7 +233,7 @@ th, td{
     font-family: 'Arial Narrow','Franklin Gothic Medium', sans-serif;
     font-weight: bold;
     font-size: 14px;
-    bottom: 1vh;
+    bottom: 0vh;
     left: 17vw;
     position: absolute;
     z-index: 500;
