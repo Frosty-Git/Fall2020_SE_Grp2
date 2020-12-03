@@ -7,19 +7,19 @@
 body{
     background: rgb(117, 207, 240, 1);
     color: black;
-    font-family: Arial, Helvetica Neue, sans-serif;
+    font-family: Arial, "Helvetica Neue", sans-serif;
 }
 
 #mapid {
-    height: 90vh;
+    height: 91vh;
     position: relative;
 }
 
 #sidebar {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     background-color: rgba(221, 221, 221, 0.9);
-    width: 16vw;
-    height: 90vh;
+    width: 16%;
+    height: 100%;
     bottom: 0vh;
     position: absolute;
     z-index: 500;
@@ -46,14 +46,12 @@ button{
 }
 
 .states li{
-    border: 1px solid black;
     margin-left: 1vw;
     margin-right: 1vw;
     margin-bottom: .25vh;
 }
 
 header{
-    z-index: 500;
     text-align: center;
     background-color: rgba(117, 207, 240, 0.808);
 }
@@ -67,7 +65,7 @@ header{
     border: 1px solid black;
     -webkit-appearance: none;  /* Override default CSS styles */
     appearance: none;
-    width: 100vw; /* Full-width */
+    width: 99.8%; /* Full-width */
     height: 2.25vh; /* Specified height */
     border-radius: 5px;
     background: #d3d3d3; /* Grey background */
@@ -119,11 +117,11 @@ footer{
    /* border: 1px solid red;*/
 }
 
-table, th, td{
-        border: 1px solid black; 
+/* table, th, td{ 
+        
         position: center; 
-        /* font-size: 110%; */
-}
+        /* font-size: 110%; 
+} */
 
 /*ul, h2{
     /* border: 1px solid black; 
@@ -137,8 +135,6 @@ table, th, td{
 #chart-legend {
     width:200px;
     padding:10px;
-    border:black 1px solid;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 14px;
 }
 
