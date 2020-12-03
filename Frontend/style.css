@@ -8,6 +8,8 @@ body{
     background: rgb(117, 207, 240, 1);
     color: black;
     font-family: 'Arial Narrow','Franklin Gothic Medium', sans-serif;
+    display: flex;
+    flex-direction: column;
 }
 
 #mapid {
@@ -69,8 +71,6 @@ button{
 header{
     font-family: 'Arial Narrow','Franklin Gothic Medium', sans-serif;
     font-size: 18px;
-    position: absolute;
-    z-index: 500;
     text-align: center;
     background-color: rgba(117, 207, 240, 0.808);
 }
