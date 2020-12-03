@@ -13,7 +13,7 @@ body{
 }
 
 #mapid {
-    height: 92vh;
+    height: 92.6vh;
     position: relative;
 }
 
@@ -175,31 +175,12 @@ header{
     background-color: #de2d26; /* #a3a3a3 for gray match to States */
     color: black
 }
-  
-/* FOOTER */
-footer{
-    align-items: center; 
-    justify-content: space-evenly;
-    width: 70%;
-    height: 27%;
-    left: 20vw;
-    bottom: 3vh;
-    display: flex;
-    position: absolute;
-    font-size: 150%;
-    z-index: 500;
-    border-radius: 0.5em;
-    /* border: 1px solid black; 
-     background-color: rgba(221, 221, 221, 0.90); 
-     opacity: 95%; /*
-
-    /*background-color: blueviolet;
-   /* border: 1px solid red;*/
-}
 
 #statisticsBlock {
-    position: relative;
-    left: 0px; 
+    position: absolute;
+    z-index: 500;
+    bottom: 2vh;
+    right: 0.5vw;
 }
 
 table{
@@ -227,20 +208,19 @@ th, td{
         padding: 2%; 
 }
 
-ul, h2{
-    /* border: 1px solid black; */
-}
-
-
-#legend{
-
-}*/
 
 .panel-body {
     background-color: rgba(221, 221, 221, 0.90);
     border-radius: 4px;
     opacity: 90%;
     text-align: center;
+}
+
+#income-colors{
+    bottom: 0vh;
+    left: 13vw;
+    position: absolute;
+    z-index: 500;
 }
 
 #chart-legend {
@@ -253,7 +233,13 @@ ul, h2{
     font-family: 'Arial Narrow','Franklin Gothic Medium', sans-serif;
     font-weight: bold;
     font-size: 14px;
+    bottom: 1vh;
+    left: 17vw;
+    position: absolute;
+    z-index: 500;
 }
+
+
 
 .legend-value {
     margin-bottom:15px;
@@ -268,29 +254,3 @@ ul, h2{
     border:#bbb solid 1px;
     background-color:#D3D3D3;
 }
-
-/* .remove-btn { */
-    /* height:20px; */
-    /* min-width:40px; */
-    /* margin-right:10px; */
-/*}
-
-
-
-/* footer ul{
-    /*background-color: burlywood;
-    margin: 1em;
-}
-
-#statisticsBlock {
-    /*background-color: chartreuse;
-    margin: 1em;
-    flex:0.8;
-} 
-
-tr td{
-    background-color: aqua;
-    border-spacing: 15vw;
-    border-style: solid;
-    row-gap: 12vh;
-}*/
