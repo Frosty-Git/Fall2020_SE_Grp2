@@ -74,13 +74,11 @@ header{
     background-color: rgba(117, 207, 240, 0.808);
 }
 
-
 .dateText{
     font-family: 'Arial Narrow','Franklin Gothic Medium', sans-serif;
     font-weight: bold;
     font-size: 16px
 }
-
 
 .slidecontainer {
     width: 100%; /* Width of the outside container */
@@ -184,15 +182,15 @@ header{
 }
 
 table{
-        /* position: center; */
-        background-color: rgba(221, 221, 221, 0.90);
-        border-radius: 4px;
-        opacity: 90%;
-        text-align: center;
-        border: 1px solid black; 
-        font-family: 'Arial Narrow','Franklin Gothic Medium', sans-serif;
-        font-weight: bold;
-        font-size: 16px;
+    /* position: center; */
+    background-color: rgba(221, 221, 221, 0.90);
+    border-radius: 4px;
+    opacity: 90%;
+    text-align: center;
+    border: 1px solid black; 
+    font-family: 'Arial Narrow','Franklin Gothic Medium', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 .statCurrentState{
@@ -200,14 +198,13 @@ table{
 }
 
 th, td{
-        border: 1px solid black; 
-        white-space: nowrap;
-        border-radius: 4px;
-        position: center;
-        text-align: center;
-        padding: 2%; 
+    border: 1px solid black; 
+    white-space: nowrap;
+    border-radius: 4px;
+    position: center;
+    text-align: center;
+    padding: 2%; 
 }
-
 
 .panel-body {
     background-color: rgba(221, 221, 221, 0.90);
@@ -218,7 +215,7 @@ th, td{
 
 #income-colors{
     bottom: 0vh;
-    left: 13vw;
+    left: 12.5vw;
     position: absolute;
     z-index: 500;
 }
@@ -238,8 +235,6 @@ th, td{
     position: absolute;
     z-index: 500;
 }
-
-
 
 .legend-value {
     margin-bottom:15px;
