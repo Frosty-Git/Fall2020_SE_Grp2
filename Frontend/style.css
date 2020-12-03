@@ -240,7 +240,6 @@ th, td{
     display:flex;
     align-items:center;
     margin: 6px;
-    /* background-color: pink; */
 }
 
 .legend-block {
@@ -248,6 +247,5 @@ th, td{
     height:20px;
     margin-right:10px;
     border:#bbb solid 1px;
-    background-color: orange;
-    /* background-color:#D3D3D3; */
+    background-color:#D3D3D3;
 }
