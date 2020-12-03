@@ -178,7 +178,6 @@ footer{
     bottom: 3vh;
     display: flex;
     position: absolute;
-    justify-content: space-evenly;
     font-size: 150%;
     z-index: 500;
     border-radius: 0.5em;
@@ -205,7 +204,6 @@ table{
         font-family: 'Arial Narrow','Franklin Gothic Medium', sans-serif;
         font-weight: bold;
         font-size: 16px;
-        /* font-size: 110%; */
 }
 
 .statCurrentState{
