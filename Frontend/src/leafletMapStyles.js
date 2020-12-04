@@ -5,44 +5,28 @@
 // const nodemon = require("nodemon");
 
 function getCovidColor(a) {
-    //5 classes natural breaks
-    // return a > 195740  ? '#d00404' :
-    //        a > 104909  ? '#ff440e' :
-    //        a > 35102   ? '#fd7610' :
-    //        a > 8846    ? '#fd9a01' :
-    //        a > 0       ? '#ffc22d' :
-    //        a = 0       ? '#f7ff5d' :
-    //                      '#707070';
+    //6 classes natural breaks, red hue
+    return a > 195740  ? '#a50f15' :    //uppermost range is 310595 
+           a > 104909  ? '#de2d26' :
+           a > 45451   ? '#fb6a4a' :
+           a > 19272   ? '#fc9272' :
+           a > 6167    ? '#fcbba1' :
+           a > 0       ? '#fee5d9' :
+           a = 0       ? '#a3a3a3' :
+                         '#a3a3a3' ;
 
-    //8 classes natural breaks
-    return  a > 163287  ?   '#ce0808'  :
-            a > 104909  ?   '#d63f00'  :
-            a > 68803   ?   '#dd5e00'  :
-            a > 38288   ?   '#e27900'  :
-            a > 18972   ?   '#e79204'  :
-            a > 8549    ?   '#eaaa1f'  :
-            a > 2736    ?   '#ecc237'  :
-            a > 0       ?   '#ffff85'  :
-            a = 0       ?   '#ffffb3'  :   
-                            '#707070';
-                            //#dea940
-            
-    //Original
-    // return a > 20000  ? '#e84141' :
-    //        a > 10000  ? '#c75d00' :
-    //        a > 2500   ? '#e68a39' :
-    //        a > 250   ? '#fffc5c' :
-    //        a > 0   ? '#33662b' :
-    //                     '#707070';
+    //0 color gray for yellow hue: #a3a399, 0 green color: #8cbf84
+    //0 color gray for red hue: #a3a3a3, 0 dark green color #799170
 }
 
 function getIncomeColor(a) {
-    return a > 80000 ? '#33662b' :
-           a > 55000  ? '#6bd459' :
-           a > 45000  ? '#fffc5c' :
-           a > 38000   ? '#e68a39' :
-           a > 0   ? '#e84141' :
-                         '#707070';
+    return a > 116985  ? '#006837' :    //uppermost range is 140382 
+           a > 93588   ? '#31a354' :
+           a > 70191   ? '#78c679' :
+           a > 46794   ? '#addd8e' :
+           a > 23397   ? '#d9f0a3' :
+           a > 0       ? '#ffffcc' :
+                         '#b5b5b5' ;
 }
 
 function styleCovid(feature) {
@@ -52,7 +36,7 @@ function styleCovid(feature) {
         opacity: 1,
         color: 'black',
         dashArray: '0',
-        fillOpacity: 0.7
+        fillOpacity: 0.6
     };
 }
 
@@ -63,7 +47,7 @@ function styleIncome(feature) {
         opacity: 1,
         color: 'black',
         dashArray: '0',
-        fillOpacity: 0.7
+        fillOpacity: 0.6
     };
 }
 
