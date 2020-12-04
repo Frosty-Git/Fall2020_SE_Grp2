@@ -1,6 +1,5 @@
 # NJCIA
 
--------------------------------------
 ## Node.js Initial Setup
 
 in VSCode terminal window:
