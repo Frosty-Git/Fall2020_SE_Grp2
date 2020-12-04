@@ -5,8 +5,8 @@
  */
 
 var current_day = 0;
-const FIRST_DATE = new Date(2020, 0, 21); //initial date set to February 14th, note months range 0-11
-const END_DATE = new Date(2020, 10, 02); //november 2, 2020 
+const FIRST_DATE = new Date(2020, 0, 21); //initial date set to january 21, 2020 (the day of the first recorded case), note months range 0-11
+const END_DATE = new Date(2020, 11, 01); //december 1, 2020 
 var date = FIRST_DATE;
 var current_state = 'USA';
 var playClicked = false;    //The play button is currently running
