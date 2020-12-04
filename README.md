@@ -9,14 +9,14 @@ in VSCode terminal window:
  - npm install -D nodemon      Makes it so in Dev mode don't have to
                         restart server for every change to the files.
 
-    npm install cors --save
+ - npm install cors --save
   
 -------------------------------------
 
-Start Server:
+### Start Server:
     On terminal run:
         npm run start
-To Start Server in Dev mode:
+### To Start Server in Dev mode:
         npm run dev
 
 -------------------------------------
