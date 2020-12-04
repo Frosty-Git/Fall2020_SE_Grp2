@@ -31,6 +31,10 @@ var countyIncomes = [];
 var countyCase = [];
 var usaIncome = [];
 var usaCases = [];
+var maskAlwaysCounty = [];
+var maskNeverCounty = [];
+var maskAlwaysUSA = [];
+var maskNeverUSA = [];
 
 //Used in main
 let layerControls;

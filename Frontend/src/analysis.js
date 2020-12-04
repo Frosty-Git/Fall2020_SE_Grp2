@@ -78,6 +78,84 @@ function getUsaCovid() {
     return [covidCases, counter];   //returns an array containing both covid cases for the state and total counties in the state
 }
 
+function getMaskAlways(){
+    maskAlwaysCounty = [];
+    var average = 0;
+    var index = 0;
+    var allFeatures = geoJson.features;    //array of all county features
+    var length = allFeatures.length
+    var counter = 0;    //total counties of current state
+    for( ; index < length ; index++)
+    {
+        var thisProperty = allFeatures[index].properties;    //this current county's properties
+        if(thisProperty.STATE_NAME == current_state)
+        {
+            var alwaysMask = thisProperty.ALWAYS;
+            maskAlwaysCounty[counter] = alwaysMask;
+            average += alwaysMask;
+            counter++;
+        }       
+    }
+    return (average/counter);
+}
+
+function getMaskNever(){
+    maskNeverCounty = [];
+    var average = 0;
+    var index = 0;
+    var allFeatures = geoJson.features;    //array of all county features
+    var length = allFeatures.length
+    var counter = 0;    //total counties of current state
+    for( ; index < length ; index++)
+    {
+        var thisProperty = allFeatures[index].properties;    //this current county's properties
+        if(thisProperty.STATE_NAME == current_state)
+        {
+            var neverMask = thisProperty.NEVER;
+            maskNeverCounty[counter] = neverMask;
+            average += neverMask;
+            counter++;
+        }       
+    }
+    return (average/counter);
+}
+
+function getUSAMaskAlways(){
+    maskAlwaysUSA = [];
+    var average = 0;
+    var index = 0;
+    var allFeatures = geoJson.features;    //array of all county features
+    var length = allFeatures.length
+    var counter = 0;    //total counties of current state
+    for( ; index < length ; index++)
+    {
+        var thisProperty = allFeatures[index].properties;    //this current county's properties
+        var alwaysMask = thisProperty.ALWAYS;
+        maskAlwaysUSA[counter] = alwaysMask;
+        average += alwaysMask;
+        counter++;    
+    }
+    return (average/counter);
+}
+
+function getUSAMaskNever(){
+    maskNeverUSA = [];
+    var average = 0;
+    var index = 0;
+    var allFeatures = geoJson.features;    //array of all county features
+    var length = allFeatures.length
+    var counter = 0;    //total counties of current state
+    for( ; index < length ; index++)
+    {
+        var thisProperty = allFeatures[index].properties;    //this current county's properties
+        var neverMask = thisProperty.NEVER;
+        maskNeverUSA[counter] = neverMask;
+        average += neverMask;
+        counter++;  
+    }
+    return (average/counter);
+}
+
 //yoinked from https://memory.psych.mun.ca/tech/js/correlation.shtml
 function getPearsonCorrelation(x, y) {
     var shortestArrayLength = 0;

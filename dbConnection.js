@@ -46,7 +46,7 @@ class DbConnection {
         var values2 = [date, value_of_table];
         //NEW QUERY
 
-        var qs = "SELECT row_to_json(fc) FROM ( SELECT 'FeatureCollection' As type, array_to_json(array_agg(f)) As features FROM (SELECT 'Feature' As type, ST_AsGeoJSON(lg.geom)::json As geometry, row_to_json((\"NAME\", \"FIPS\", Med_Income, cases, date, \"STATE_NAME\")) As properties FROM (Select uc.\"FIPS\", coalesce(st.date, $1) as date, (CASE When (uc.\"FIPS\" = '36005' or uc.\"FIPS\" = '36047' or uc.\"FIPS\" = '36061' or uc.\"FIPS\" = '36081' or uc.\"FIPS\" = '36085') then  $2 else (Case When st.\"cases\" is NULL THEN 0 else st.\"cases\" END)END)  as cases, uc.med_income, uc.\"NAME\", uc.\"STATE_NAME\", uc.geom from(select c19.\"county\",  c19.cases, c19.date, c19.\"FIPS\" from public.\"covid\" as c19 where c19.date = $1)st right join public.\"USA_Counties\" as uc on uc.\"FIPS\" = st.\"FIPS\")  As lg ) As f) As fc";
+        var qs = "SELECT row_to_json(fc) FROM ( SELECT 'FeatureCollection' As type, array_to_json(array_agg(f)) As features FROM (SELECT 'Feature' As type, ST_AsGeoJSON(lg.geom)::json As geometry, row_to_json((\"NAME\", \"FIPS\", Med_Income, cases, date, \"STATE_NAME\", \"Always\", \"Never\")) As properties FROM (Select uc.\"FIPS\", coalesce(st.date, $1) as date, (CASE When (uc.\"FIPS\" = '36005' or uc.\"FIPS\" = '36047' or uc.\"FIPS\" = '36061' or uc.\"FIPS\" = '36081' or uc.\"FIPS\" = '36085') then  $2 else (Case When st.\"cases\" is NULL THEN 0 else st.\"cases\" END)END)  as cases, uc.med_income, uc.\"NAME\", uc.\"STATE_NAME\", uc.geom, uc.\"Always\", uc.\"Never\" from(select c19.\"county\",  c19.cases, c19.date, c19.\"FIPS\" from public.\"covid\" as c19 where c19.date = $1)st right join public.\"USA_Counties3\" as uc on uc.\"FIPS\" = st.\"FIPS\")  As lg ) As f) As fc";
 
         //------------Cleanup Query Result---------------------------
         //var results = await client.query(qs);
@@ -62,6 +62,8 @@ class DbConnection {
         results = results.replace(/f4/g, 'cases');
         results = results.replace(/f5/g, 'date');
         results = results.replace(/f6/g, 'STATE_NAME');
+        results = results.replace(/f7/g, 'ALWAYS');
+        results = results.replace(/f8/g, 'NEVER');
 
         results = JSON.parse(results);
   

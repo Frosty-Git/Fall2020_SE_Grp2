@@ -142,7 +142,11 @@ function setCurrentStateUsa() {
     //console.log("income length: " + usaIncome.length);
     //console.log("cases length: " + usaCases.length);
     var correlation = getPearsonCorrelation(usaIncome, usaCases);
-    updateStatisticsBox(total[0], income, covidMean, correlation);
+    var maskUseAlways = getUSAMaskAlways();
+    var alwaysCorrelation = getPearsonCorrelation(maskAlwaysUSA, usaCases)
+    var maskUseNever = getUSAMaskNever();
+    var neverCorrelation = getPearsonCorrelation(maskNeverUSA, usaCases)
+    updateStatisticsBox(total[0], income, covidMean, correlation, maskUseAlways, alwaysCorrelation, maskUseNever, neverCorrelation);
 }
 
 /**
@@ -174,15 +178,23 @@ function setCurrentState(stateName) {
     var income = getStateAvgMedIncome();   
     var covidMean =  total[0]/total[1];  //total cases over all counties in the state divided by number of counties
     var correlation = getPearsonCorrelation(countyIncomes, countyCase);
-    updateStatisticsBox(total[0], income, covidMean, correlation);
+    var maskUseAlways = getMaskAlways();
+    var alwaysCorrelation = getPearsonCorrelation(maskAlwaysCounty, countyCase)
+    var maskUseNever = getMaskNever();
+    var neverCorrelation = getPearsonCorrelation(maskNeverCounty, countyCase)
+    updateStatisticsBox(total[0], income, covidMean, correlation, maskUseAlways, alwaysCorrelation, maskUseNever, neverCorrelation);
 }
 
-function updateStatisticsBox(total, income, mean, correlation) {
+function updateStatisticsBox(total, income, mean, correlation, maskAlways, alwaysCorrelation, maskNever, neverCorrelation) {
     document.querySelector(".statCurrentState").innerHTML = current_state;  //Updates the current state
     document.querySelector(".statTotalCovid").innerHTML = total;            //Updates the covid total
     document.querySelector(".statIncome").innerHTML = "$" + income.toFixed(2);               //Updates the avg median income
     document.querySelector(".covidMean").innerHTML = mean.toFixed(2);                  //Upates the covid mean
     document.querySelector(".correlation").innerHTML = correlation.toFixed(5);
+    document.querySelector(".maskUseAlways").innerHTML = (maskAlways*100).toFixed(3) + "%";
+    document.querySelector(".correlationAlways").innerHTML = alwaysCorrelation.toFixed(5);
+    document.querySelector(".maskUseNever").innerHTML = (maskNever*100).toFixed(3) + "%";
+    document.querySelector(".correlationNever").innerHTML = neverCorrelation.toFixed(5);
 }
 
 //-----------Date Control Slider-----------------

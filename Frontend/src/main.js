@@ -32,6 +32,8 @@ fetch(dateURL, options).then(response => {
             geoJson = res;
             covid = L.geoJson(res, { style: styleCovid });
             income = L.geoJson(res, { style: styleIncome });
+            always = L.geoJson(res, { style: styleAlways});
+            never = L.geoJson(res, { style : styleNever})
             //DATA_LENGTH = geoJson.features[0].properties.covid.length;
 
 
@@ -60,6 +62,8 @@ fetch(dateURL, options).then(response => {
             /* Sets Leaflet Map Layers */
             overlayMaps = {
                 "Income": income,
+                "Always Mask Percentage" : always,
+                "Never Mask Percentage" : never,
                 "Covid": covid
             };
 
