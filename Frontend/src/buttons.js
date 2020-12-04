@@ -127,7 +127,8 @@ async function resetDate() {
  */
 function resetUSA() {
     removeCurrentOutline();
-    mymap.setView([39.056882, -98.407468], 5);
+    mymap.setView([36.798352, -104.633782], 5);
+    //mymap.setView([39.056882, -98.407468], 5);
     //mymap.flyTo([39.056882, -98.407468], 5);
     setCurrentStateUsa()
 }

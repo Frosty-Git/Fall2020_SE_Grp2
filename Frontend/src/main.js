@@ -34,6 +34,7 @@ fetch(dateURL, options).then(response => {
             income = L.geoJson(res, { style: styleIncome });
             //DATA_LENGTH = geoJson.features[0].properties.covid.length;
 
+
             /* Creates Leaflet Map */
             var osm = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
                 attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -54,6 +55,7 @@ fetch(dateURL, options).then(response => {
             mymap.addLayer(covid);
             osm.addTo(mymap);
             /* End Create Leaflet Map */
+          
 
             /* Sets Leaflet Map Layers */
             overlayMaps = {
