@@ -288,7 +288,7 @@ th, td{
 @media only screen and (min-width: 768px){
     #income-colors{
         bottom: 0vh;
-        left: 17vw;
+        left: 14vw;
         position: absolute;
         z-index: 500;
     }
