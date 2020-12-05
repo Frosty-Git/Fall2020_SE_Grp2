@@ -1,26 +1,31 @@
 /**
- * Style functions for Leaflet Data Layers.
+*   Style functions for Leaflet Data Layers.
+*/
+
+/**
+ * Specifies the color for a specific value of covid cases
+ * 
+ * @param   a   The number of cases  
  */
-
-// const nodemon = require("nodemon");
-
 function getCovidColor(a) {
-    //6 classes natural breaks, red hue
-    return a > 195740  ? '#a50f15' :    //uppermost range is 310595 
+    // 6 classes natural breaks, red hue
+    return a > 195740  ? '#a50f15' :    // Uppermost range is 310595 
            a > 104909  ? '#de2d26' :
            a > 45451   ? '#fb6a4a' :
            a > 19272   ? '#fc9272' :
            a > 6167    ? '#fcbba1' :
            a > 0       ? '#fee5d9' :
-           a = 0       ? '#a3a3a3' :
+           a = 0       ? '#a3a3a3' :    // Gray
                          '#a3a3a3' ;
-
-    //0 color gray for yellow hue: #a3a399, 0 green color: #8cbf84
-    //0 color gray for red hue: #a3a3a3, 0 dark green color #799170
 }
 
+/**
+ * Specifies the color for a specific value of median income
+ * 
+ * @param   a   The median income  
+ */
 function getIncomeColor(a) {
-    return a > 116985  ? '#006837' :    //uppermost range is 140382 
+    return a > 116985  ? '#006837' :    // Uppermost range is 140382 
            a > 93588   ? '#31a354' :
            a > 70191   ? '#78c679' :
            a > 46794   ? '#addd8e' :
@@ -29,6 +34,9 @@ function getIncomeColor(a) {
                          '#b5b5b5' ;
 }
 
+/**
+ * Styles the covid layer for the map     
+ */
 function styleCovid(feature) {
     return {
         fillColor: getCovidColor(feature.properties.cases),
@@ -40,6 +48,9 @@ function styleCovid(feature) {
     };
 }
 
+/**
+ * Styles the income layer for the map     
+ */
 function styleIncome(feature) {
     return {
         fillColor: getIncomeColor(feature.properties.Med_Income),
@@ -51,6 +62,9 @@ function styleIncome(feature) {
     };
 }
 
+/**
+ * Style thes outline of the counties of a state when selected
+ */
 function styleState(feature) {
     return {
         fillColor: 'none',
