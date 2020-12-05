@@ -51,6 +51,7 @@ function pressPlay() {
  * header
  * 
  * @param   dateMilli   A Date object in millisecond form
+ * @return              The date as a String
  */
 function dateStringFromMilli(dateMilli) {
     var dateNew = new Date(dateMilli);
@@ -118,8 +119,8 @@ function resetUSA() {
  */
 function setCurrentStateUsa() {
     current_state = 'USA';
-    // getUSACovid returns an array containing total covid cases for the US
-    // (array[0]) and the number of counties (array[1])
+    /* getUSACovid returns an array containing total covid cases for the US
+       (array[0]) and the number of counties (array[1]) */
     var total = getUsaCovid();
     var income = getUsaAvgMedIncome(); 
     // Total cases over all counties divided by number of counties  
@@ -151,8 +152,8 @@ function setCurrentState(stateName) {
     stateChanged = true;
     current_state = stateName;
     outlineState();
-    // getSingleCovid returns an array containing total covid cases for a state
-    // (array[0]) and the number of counties (array[1])
+    /* getSingleCovid returns an array containing total covid cases for a state
+       (array[0]) and the number of counties (array[1]) */
     var total = getSingleCovid();   
     var income = getStateAvgMedIncome();  
     // Total cases over all counties in the state divided by number of counties 
@@ -209,8 +210,8 @@ function updateSlider(sliderValue) {
     const START_MIL_SEC = Date.parse(FIRST_DATE);       
     // 86400000 is the milliseconds of a single day
     const MIL_SEC_DAY = 86400000;                       
-
-    /*  The slider value ranges from 0 to 315, each of which correspond to a
+    /*
+        The slider value ranges from 0 to 315, each of which correspond to a
         day in the year. The first day is 0, and the last day is 315. To convert
         between the slider value and the real day, you must multiply the current
         value by the number of milliseconds in a single day. Then, in order to
@@ -221,92 +222,136 @@ function updateSlider(sliderValue) {
 
 }
 
-
-//1581656400000 feb 14th
-//add day 86400000
-
-//Send current date to node.js
+/**
+ * Sends current date to node.js. Makes a query that returns a formatted geoJson
+ * reflecting the data for current date.
+ */
 function sendDate() {
-    console.log("Sending date for new geoJson");
     const dateString = dateStringFromMilli(Date.parse(date));
-        const data = { dateString }
-        const options = { 
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            } ,
-            body: JSON.stringify(data)
-        }
-        fetch(dateURL, options).then(response => {
-            
-            response.json().then(res => {
-                try{
-                    console.log("Successfully converted to geojson.")
-                    geoJson = res;
-                    changeMapLayers(res);
-                    if(current_state != 'USA') {
-                        setCurrentState(current_state);     //update the stats box with the same currently selected state, but with new stats for the new date (not working, has to wait for sendState)
-                    }
-                    else {
-                        setCurrentStateUsa();
-                    }
+    /*
+        Date in String format as a Javascript object; used to create a json that
+        is stringified for querying
+    */
+    const data = { dateString };
+    // Sets the options for the fetch
+    const options = { 
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)  // Converts date json to String for query
+    }
+    /*
+        Fetches from the node server using the date at dateURL. The response is
+        the new geoJson for the map at said date.
+    */
+    fetch(dateURL, options).then(response => {       
+        response.json().then(res => {
+            try {
+                console.log("Successfully converted to geojson.");
+                /*
+                    Updates global geoJson to the geoJson from the result of the
+                    query.
+                */
+                geoJson = res;  
+                changeMapLayers(res);
+                if(current_state != 'USA') {
+                    /*
+                        Update the stats box with the same currently
+                        selected state, but with new stats for the new date.
+                    */
+                    setCurrentState(current_state);     
                 }
-                catch (error) {
-                    console.log("ERROR: failed to convert json")
+                else {
+                    /*
+                        Update the stats box still for USA, but with new stats
+                        for the new date.
+                    */
+                    setCurrentStateUsa();
                 }
-
-            })
-        });
+            }
+            catch (error) {
+                console.log("ERROR: failed to convert json");
+            }
+        })
+    });
 }
 
-//takes a geojson and uses it to reset the map layers.
+/**
+ * Takes a geojson and uses it to set the map layers. The function is used
+ * when date is updated, thus the map must change to reflect the data for this
+ * date.
+ * 
+ * @param   geojson     The geoJson used to update the map's layers
+ */
 function changeMapLayers(geojson) {
-    // console.log(geoJson);
-    
-    mymap.removeLayer(covid); //This is not removing the layer...
-
+    mymap.removeLayer(covid); 
     layerControls.removeLayer(covid);
     covid = L.geoJson(geojson, {style: styleCovid});
-
     layerControls.addBaseLayer(covid, "Covid");
-
-    if(currentLayerID != 3165){  //income is not currently selected, 3165 is income layer's id
+    /*
+        Income layer is not currently selected; 3165 is Income layer's id
+        Note: the Income layer never changes since it is static throughout all
+        dates, so only the Covid layer will need to update if selected.
+    */
+    if(currentLayerID != 3165) {
         mymap.addLayer(covid);
     }
 }
 
+/**
+ * Outlines the currently selected state (if it's not USA) in red.
+ */
 function outlineState() {
     if(stateChanged == true) {
+        // Remove the outline for the previous state since is no longer selected
         removeCurrentOutline();
     }
     stateChanged = false;
     if(current_state != 'USA') {
+        // Represents all counties in the current state
         var geoFeatures = geoJson.features;
         var index = 0;
         var length = geoFeatures.length
-        var counter = 0;    //total counties of current state
+        var counter = 0;    // Represents the total counties of current state
         for (; index < length; index++) {
-            var thisProperty = geoFeatures[index].properties;    //this current county's properties
-            if (thisProperty.STATE_NAME == current_state) {
-                stateGeojsons[counter] = L.geoJson(geoFeatures[index], {style: styleState});    //create a layer from the current county's features and add it to the state's array of layers
+            /* 
+                geoFeatures[index].properties is this current county's
+                properties. Checks that the name of the county's state matches
+                that of the current state.
+            */
+            if (geoFeatures[index].properties.STATE_NAME == current_state) {
+                /*
+                    Creates a layer from the current county and adds it to the
+                    state's array of layers. There is a layer for each county,
+                    which will altogether make up the outline.
+                */
+                stateGeojsons[counter] = L.geoJson(geoFeatures[index], {style: styleState});
                 counter++;
             }
         }
         index = 0;
         for(; index < counter; index++)
         {
-            stateGeojsons[index].addTo(mymap)   //add the layer for each county to the map
-
+            // Add the layer for each county to the map
+            stateGeojsons[index].addTo(mymap)
         }
     } 
 }
 
+/**
+ * Removes the outline of a state. Function is used when the state selected is
+ * changed.
+ */
 function removeCurrentOutline() {
-    if(stateGeojsons.length > 0)
+    var geoLength = stateGeojsons.length;
+    /*
+        A length greater than 0 means a state is selected and has at least 1
+        county to remove an outline for.
+    */
+    if(geoLength > 0)
     {
-        var i = 0;
-        var geoLength = stateGeojsons.length;
-        for(; i < geoLength; i++)
+        for(var i = 0; i < geoLength; i++)
         {
             mymap.removeLayer(stateGeojsons[i]);
         }

@@ -13,6 +13,7 @@ var playClicked = false;    //The play button is currently running
 var paused = false;
 //const url = 'http://localhost:5000/api/states.geojson';
 const url = 'http://localhost:5000/api/USA_Counties.geojson';
+// Stores the current date as a json
 const dateURL = 'http://localhost:5000/date-input';
 var stateChanged = false;
 

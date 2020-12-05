@@ -51,7 +51,6 @@ fetch(dateURL, options).then(response => {
 
             /* Leaflet Layer Controls */
             layerControls = L.control.layers(overlayMaps, null);
-            //L.control.layers(overlayMaps, null).addTo(mymap);
             layerControls.addTo(mymap);
             /* Leaflet Zoom Control */
             L.control.zoom({ position: 'topright' }).addTo(mymap);
