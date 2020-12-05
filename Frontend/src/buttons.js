@@ -51,7 +51,7 @@ function pressPlay() {
  * header
  * 
  * @param   dateMilli   A Date object in millisecond form
- * @return              The date as a String
+ * @returns             The date as a String
  */
 function dateStringFromMilli(dateMilli) {
     var dateNew = new Date(dateMilli);
@@ -157,7 +157,7 @@ function setCurrentState(stateName) {
     var income = getStateAvgMedIncome();  
     // Total cases over all counties in the state divided by number of counties 
     var covidMean =  total[0]/total[1];  
-    var correlation = getPearsonCorrelation(countyIncomes, countyCases);
+    var correlation = getPearsonCorrelation(countyIncomes, countyCase);
     updateStatisticsBox(total[0], income, covidMean, correlation);
 }
 
