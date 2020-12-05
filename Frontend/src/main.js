@@ -1,15 +1,6 @@
-// const leafletMap = new Map();
-// var mymap;
-// async function setupMap() {
-//     mymap = await leafletMap.setup();
-// }
-// setupMap();
-
-
-console.log('Fetching data');
-// const response = await fetch(url);
-// geoJson = await response.json();
-// console.log(geoJson);
+/**
+ * Performs the initial setup for the Leaflet Map.
+ */
 
 const dateString = dateStringFromMilli(Date.parse(date));
 const data = { dateString }
@@ -20,7 +11,9 @@ const options = {
         },
         body: JSON.stringify(data)
 }
-
+/*
+    Initial setup for the Leaflet map.
+*/
 mymap = L.map('mapid', {
     maxBounds: L.latLngBounds(L.latLng(73.65, -180.00), L.latLng(10.50, -50.11)),
     zoomControl: false
@@ -28,12 +21,10 @@ mymap = L.map('mapid', {
 
 fetch(dateURL, options).then(response => {
         response.json().then(res => {
-            // const geoJson = Multiple_States_Simple;
+
             geoJson = res;
             covid = L.geoJson(res, { style: styleCovid });
             income = L.geoJson(res, { style: styleIncome });
-            //DATA_LENGTH = geoJson.features[0].properties.covid.length;
-
 
             /* Creates Leaflet Map */
             var osm = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -47,11 +38,6 @@ fetch(dateURL, options).then(response => {
                 accessToken: 'pk.eyJ1IjoiZnJvc3R5MDA3IiwiYSI6ImNrZzU4ZTZlZzByeXEycm8zM29ldDk1aTIifQ.AYU9EhOwRLSUhmqhH92k5w'
             });
 
-            // mymap = L.map('mapid', {
-            //     maxBounds: L.latLngBounds(L.latLng(73.65, -180.00), L.latLng(10.50, -50.11)),
-            //     layers: [covid],
-            //     zoomControl: false
-            // }).setView([39.056882, -98.407468], 5);
             mymap.addLayer(covid);
             osm.addTo(mymap);
             /* End Create Leaflet Map */
@@ -74,13 +60,11 @@ fetch(dateURL, options).then(response => {
             setCurrentStateUsa();
         });
 });
-        
 
-console.log('Displaying data');
-
+/**
+ * Sets the current layer ID to the currently selected layer's ID
+ */
 mymap.on('baselayerchange', function (e) {
     currentLayerID = e.layer._leaflet_id;
     console.log(currentLayerID); 
  });
-
- 
