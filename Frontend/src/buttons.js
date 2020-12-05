@@ -108,8 +108,7 @@ async function resetDate() {
  */
 function resetUSA() {
     removeCurrentOutline();
-    mymap.setView([36.798352, -104.633782], 5);
-    //mymap.setView([39.056882, -98.407468], 5);
+    mymap.setView([39.056882, -98.407468], 5);
     setCurrentStateUsa()
 }
 
@@ -158,7 +157,7 @@ function setCurrentState(stateName) {
     var income = getStateAvgMedIncome();  
     // Total cases over all counties in the state divided by number of counties 
     var covidMean =  total[0]/total[1];  
-    var correlation = getPearsonCorrelation(countyIncomes, countyCase);
+    var correlation = getPearsonCorrelation(countyIncomes, countyCases);
     updateStatisticsBox(total[0], income, covidMean, correlation);
 }
 
@@ -229,7 +228,7 @@ function updateSlider(sliderValue) {
 function sendDate() {
     const dateString = dateStringFromMilli(Date.parse(date));
     /*
-        Date in String format as a Javascript object; used to create a json that
+        Date in String format as a JavaScript object; used to create a json that
         is stringified for querying
     */
     const data = { dateString };
