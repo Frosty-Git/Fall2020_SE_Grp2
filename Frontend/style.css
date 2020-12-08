@@ -292,4 +292,9 @@ th, td{
         position: absolute;
         z-index: 500;
     }
+
+    #mapid {
+        height: 90vh;
+        position: relative;
+    }
 }
