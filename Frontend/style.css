@@ -294,7 +294,7 @@ th, td{
     }
 }
 
-@media only screen and (max-width: 768px){
+@media only screen and (min-width: 768px){
     #mapid {
         height: 90vh;
         position: relative;
