@@ -36,7 +36,7 @@ function styleCovid(feature) {
         opacity: 1,
         color: 'black',
         dashArray: '0',
-        fillOpacity: 0.6
+        fillOpacity: 1
     };
 }
 
@@ -47,7 +47,7 @@ function styleIncome(feature) {
         opacity: 1,
         color: 'black',
         dashArray: '0',
-        fillOpacity: 0.6
+        fillOpacity: 1
     };
 }
 
@@ -95,7 +95,7 @@ function styleAlways(feature) {
         opacity: 1,
         color: 'black',
         dashArray: '0',
-        fillOpacity: 0.6
+        fillOpacity: 1
     };
 }
 
@@ -119,6 +119,6 @@ function styleNever(feature) {
         opacity: 1,
         color: 'black',
         dashArray: '0',
-        fillOpacity: 0.6
+        fillOpacity: 1
     };
 }

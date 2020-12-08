@@ -40,6 +40,9 @@ var dateText = document.getElementById("dateText");
 // }
 
 function pressPlay() {
+    layerControls.removeLayer(income);
+    layerControls.removeLayer(alwaysM);
+    layerControls.removeLayer(never);
     if(playClicked == false) {
         playClicked = true;
         //console.log(date);
@@ -93,6 +96,12 @@ function updateDateText(dateText) {
  */
 function pressPause() {
     playClicked = false;
+    if(!paused)
+    {
+        layerControls.addBaseLayer(income, "Income");
+        layerControls.addBaseLayer(alwaysM, "Always Mask Percentage");
+        layerControls.addBaseLayer(never,"Never Mask Percentage");
+    }
     paused = true;
     //console.log(date);
 }
@@ -280,9 +289,7 @@ function changeMapLayers(geojson) {
 
     layerControls.addBaseLayer(covid, "Covid");
 
-    if(currentLayerID != 3165){  //income is not currently selected, 3165 is income layer's id
-        mymap.addLayer(covid);
-    }
+    mymap.addLayer(covid);
 }
 
 function outlineState() {

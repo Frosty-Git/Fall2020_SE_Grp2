@@ -32,7 +32,7 @@ fetch(dateURL, options).then(response => {
             geoJson = res;
             covid = L.geoJson(res, { style: styleCovid });
             income = L.geoJson(res, { style: styleIncome });
-            always = L.geoJson(res, { style: styleAlways});
+            alwaysM = L.geoJson(res, { style: styleAlways});
             never = L.geoJson(res, { style : styleNever})
             //DATA_LENGTH = geoJson.features[0].properties.covid.length;
 
@@ -62,7 +62,7 @@ fetch(dateURL, options).then(response => {
             /* Sets Leaflet Map Layers */
             overlayMaps = {
                 "Income": income,
-                "Always Mask Percentage" : always,
+                "Always Mask Percentage" : alwaysM,
                 "Never Mask Percentage" : never,
                 "Covid": covid
             };
@@ -83,8 +83,7 @@ fetch(dateURL, options).then(response => {
 console.log('Displaying data');
 
 mymap.on('baselayerchange', function (e) {
-    currentLayerID = e.layer._leaflet_id;
-    console.log(currentLayerID); 
+    outlineState()
  });
 
  
