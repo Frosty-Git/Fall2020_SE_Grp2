@@ -285,6 +285,14 @@ th, td{
     background-color:#D3D3D3;
 }
 
+@media only screen and (max-width: 700px){
+    #income-colors{
+        bottom: 0vh;
+        left: 11vw;
+        position: absolute;
+        z-index: 500;
+    }
+}
 
 @media only screen and (max-width: 560px){
     #mapid {
