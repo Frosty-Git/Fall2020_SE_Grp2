@@ -1,90 +1,74 @@
+// Initial date (January 21, 2020) represented in string form
 const FIRST_DATE_STRING = dateStringFromMilli(Date.parse(FIRST_DATE));
-//Date Slider
+// Represents the current slider value, which corresponds to current date
 var slider = document.getElementById("myRange");
-//Current Date Text
+// Current value of date (housed in the header)
 var dateText = document.getElementById("dateText");
 
-// function pressPlay() {
-//     playClicked = true;
-//     //console.log(date);
-//     var milliDate = Number(Date.parse(date)); //date in millisecond format, 86400000 is one day's worth of time
-//     console.log(milliDate);
-//     endDateMilli = Number(Date.parse(END_DATE)); //end date in millisecond form
-
-//     paused = false;
-//     const sleepNow = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
-
-//     async function delay() {
-//         for (milliDate; !paused && milliDate <= endDateMilli; (milliDate += 86400000)) {
-//             await sleepNow(1000)
-//              if(paused)
-//             {
-//                 break;
-//             }
-// //             var milliAsDate = new Date(milliDate);
-//             var dateString = dateStringFromMilli(milliAsDate);  //date string needs single quotes for query
-//             console.log(dateString);
-//             date = new Date(milliAsDate);
-//             sendDate();
-//             slider.value++;     //Update the date slider bar.
-//             updateDateText(dateString);  //update currentDate in html (not working in time needs to wait for date to update fully)
-//             if(current_state != 'USA') {
-//                 setCurrentState(current_state);     //update the stats box with the same currently selected state, but with new stats for the new date (not working, has to wait for sendState)
-//             }
-//             else {
-//                 setCurrentStateUsa();
-//             }
-//         }
-//     }
-//     delay()
-// }
-
+/**
+ * This function is called when the play button is pressed. It updates
+ * the geoJson to the next date and updates the value/date reflected
+ * in the slider bar.
+ */
 function pressPlay() {
     if(playClicked == false) {
         playClicked = true;
-        //console.log(date);
-        var milliDate = Number(Date.parse(date)); //date in millisecond format, 86400000 is one day's worth of time
-        //console.log(milliDate);
-        endDateMilli = Number(Date.parse(END_DATE)); //end date in millisecond form
+        // Current date in milliseconds (number only)
+        var milliDate = Number(Date.parse(date));
+        // End date in millisecond form (number only)
+        endDateMilli = Number(Date.parse(END_DATE)); 
 
         paused = false;
-        const sleepNow = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
+        // Allows the thread to sleep
+        const sleepNow = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
 
         async function delay() {
             while(!paused && milliDate <= endDateMilli) {
-                await sleepNow(1000)
+                await sleepNow(1000);    // Sleep for 1 second
                 if(paused)
                 {
                     break;
                 }
+                // Number-only milliseconds converted to Date object
                 var milliAsDate = new Date(milliDate);
-                var dateString = dateStringFromMilli(milliAsDate);  //date string needs single quotes for query
-                console.log(dateString);
+                // Date as a string (formatted for querying and display)
+                var dateString = dateStringFromMilli(milliAsDate);
                 
                 sendDate();
-                date = new Date(milliAsDate);
-                slider.value++;     //Update the date slider bar.
-                updateDateText(dateString);  //update currentDate in html (not working in time needs to wait for date to update fully)
-                
+                date = new Date(milliAsDate);   // Update global date
+                slider.value++;                 // Update the slider bar value
+                updateDateText(dateString);     // Update date displayed in header
+                // 86400000 is one day's worth of time in milliseconds
                 milliDate += 86400000;
             }
         }
-        delay()
+        delay();
     }
 }
 
+/**
+ * Creates a date in String format for use in the query and for display in the
+ * header
+ * 
+ * @param   dateMilli   A Date object in millisecond form
+ * @returns             The date as a String
+ */
 function dateStringFromMilli(dateMilli) {
     var dateNew = new Date(dateMilli);
-    var curr_month = dateNew.getMonth() + 1; //Months are zero based
+    var curr_month = dateNew.getMonth() + 1; // Months are zero based
     var curr_date = dateNew.getDate();
     var curr_year = dateNew.getFullYear();
     var dateString = curr_year + "-" + curr_month + "-" + curr_date;
-    //console.log(dateString);
     return dateString;
 }
 
-function updateDateText(dateText) {
-    document.querySelector(".dateText").innerHTML = dateText;
+/**
+ * Updates the date in the header.
+ * 
+ * @param   dateString  An already formatted date as a String
+ */
+function updateDateText(dateString) {
+    document.querySelector(".dateText").innerHTML = dateString;
 }
 
 /**
@@ -94,31 +78,28 @@ function updateDateText(dateText) {
 function pressPause() {
     playClicked = false;
     paused = true;
-    //console.log(date);
 }
 
 /**
- * The stop button's function. Stops the Covid data from moving and
+ * The reset button's function. Stops the Covid data from moving and
  * resets the current day back to the first day of the data.
  */
-function pressStop() {
+function pressReset() {
     pressPause();
     resetDate();
-    resetUSA();     //resets zoom back to USA level and removes current state outline
-    sendDate();     //reset the map back to initial state of first recorded date
+    // Resets zoom back to USA level and removes current state outline
+    resetUSA();     
+    sendDate();     // Resets map back to initial state of first recorded date
     updateDateText(FIRST_DATE_STRING);
-    //console.log(date);
-    //Update the date slider bar.
+    // Resets the slider bar back to 0.
     slider.value = 0;
-    //dateText.innerHTML = dateStringFromMilli(Date.parse(date));
 }
 
 /**
- * Resets the current day to the first day in the covid data.
+ * Resets the current day to the first day in the covid data (January 21, 2020).
  */
 async function resetDate() {
     date = FIRST_DATE;
-    // date = new Date(2020,9,15);
 }
 
 /**
@@ -127,20 +108,22 @@ async function resetDate() {
  */
 function resetUSA() {
     removeCurrentOutline();
-    mymap.setView([36.798352, -104.633782], 5);
-    //mymap.setView([39.056882, -98.407468], 5);
-    //mymap.flyTo([39.056882, -98.407468], 5);
+    mymap.setView([39.056882, -98.407468], 5);
     setCurrentStateUsa()
 }
 
+/**
+ * Sets the currently selected state to USA. Updates the stats to reflect this
+ * change.
+ */
 function setCurrentStateUsa() {
     current_state = 'USA';
-    var total = getUsaCovid();   //getSingleCovid returns an array containing total covid cases for a state (array[0]) and the number of counties (array[1])
-    //console.log(total[0]);
-    var income = getUsaAvgMedIncome();   
-    var covidMean =  total[0]/total[1];  //total cases over all counties divided by number of counties
-    //console.log("income length: " + usaIncome.length);
-    //console.log("cases length: " + usaCases.length);
+    /* getUSACovid returns an array containing total covid cases for the US
+       (array[0]) and the number of counties (array[1]) */
+    var total = getUsaCovid();
+    var income = getUsaAvgMedIncome(); 
+    // Total cases over all counties divided by number of counties  
+    var covidMean =  total[0]/total[1];
     var correlation = getPearsonCorrelation(usaIncome, usaCases);
     updateStatisticsBox(total[0], income, covidMean, correlation);
 }
@@ -149,164 +132,225 @@ function setCurrentStateUsa() {
  * Changes the view to the input state. Changes the zoom to the 
  * input zoom.
  * 
- * @param {*} stateIndex The state being focused on.
- * @param {*} zoomLevel The default zoom level for the state.
+ * @param   stateIndex  The index of the state selected
+ * @param   zoomLevel   The zoom level for the state
  */
 function zoomToState(stateIndex, zoomLevel) {
     stateObject = State_Centroids.features[stateIndex];
     longitude = stateObject.properties.long;
     latitude = stateObject.properties.lat;
     mymap.setView([latitude, longitude], zoomLevel);
-    //mymap.flyTo([latitude, longitude], zoomLevel);
 }
 
 /**
- * Sets the current state global variable to the state that is
- * currently selected.
+ * Sets the state global variable to the state that is currently selected.
  * 
- * @param {*} stateName The new current state being selected.
+ * @param   stateName   The new current state being selected.
  */
 function setCurrentState(stateName) {
     stateChanged = true;
     current_state = stateName;
     outlineState();
-    var total = getSingleCovid();   //getSingleCovid returns an array containing total covid cases for a state (array[0]) and the number of counties (array[1])
-    var income = getStateAvgMedIncome();   
-    var covidMean =  total[0]/total[1];  //total cases over all counties in the state divided by number of counties
+    /* getSingleCovid returns an array containing total covid cases for a state
+       (array[0]) and the number of counties (array[1]) */
+    var total = getSingleCovid();   
+    var income = getStateAvgMedIncome();  
+    // Total cases over all counties in the state divided by number of counties 
+    var covidMean =  total[0]/total[1];  
     var correlation = getPearsonCorrelation(countyIncomes, countyCase);
     updateStatisticsBox(total[0], income, covidMean, correlation);
 }
 
+/**
+ * Updates the statistics box to reflect the numbers for the currently selected
+ * state.
+ * 
+ * @param   total       Total covid cases of current state 
+ * @param   income      Average median income
+ * @param   mean        The average cases per county
+ * @param   correlation Correlation between income and covid cases
+ */
 function updateStatisticsBox(total, income, mean, correlation) {
-    document.querySelector(".statCurrentState").innerHTML = current_state;  //Updates the current state
-    document.querySelector(".statTotalCovid").innerHTML = total;            //Updates the covid total
-    document.querySelector(".statIncome").innerHTML = "$" + income.toFixed(2);               //Updates the avg median income
-    document.querySelector(".covidMean").innerHTML = mean.toFixed(2);                  //Upates the covid mean
+    // Updates the current state
+    document.querySelector(".statCurrentState").innerHTML = current_state;  
+    // Updates the covid total
+    document.querySelector(".statTotalCovid").innerHTML = total;   
+    // Updates the avg median income 
+    document.querySelector(".statIncome").innerHTML = "$" + income.toFixed(2); 
+    // Upates the covid mean              
+    document.querySelector(".covidMean").innerHTML = mean.toFixed(2);   
+    // Updates the correlation               
     document.querySelector(".correlation").innerHTML = correlation.toFixed(5);
 }
 
-//-----------Date Control Slider-----------------
-
-//output.innerHTML = slider.value; // Display the default slider value
-
-// Update the current slider value (each time you drag the slider handle)
+/**
+ * Updates the current slider value (each time you drag the slider handle)
+ */
 slider.onchange = function() {
     if(playClicked == true)
     {
-        pressPause();   //stop the loop if it is currently playing
+        pressPause();   // Stop the loop if it is currently playing
     }
-    theBigBrainAlgorithm(this.value);
+    updateSlider(this.value);
+    // Updates the date in the header
     dateText.innerHTML = dateStringFromMilli(Date.parse(date));
     sendDate();
-    
-    // if(current_state != 'USA') {
-    //     setCurrentState(current_state);     //update the stats box with the same currently selected state, but with new stats for the new date (not working, has to wait for sendState)
-    // }
-    // else {
-    //     setCurrentStateUsa();
-    // }
 }
 
-//Put algorithm here...
-function theBigBrainAlgorithm(sliderValue) {
-    const START_MIL_SEC = Date.parse(FIRST_DATE);       //first date in milliseconds
-    const MIL_SEC_DAY = 86400000;                       //milliseconds of a single day
-
+/**
+ * Updates the slider to a new value. Updates the global date value with
+ * the value it corresponds to in the slider. This relationship is reflected
+ * in (sliderValue * MIL_SEC_DAY + START_MIL_SEC).
+ * 
+ * @param   sliderValue     The value the slider is updated to
+ */
+function updateSlider(sliderValue) {
+    // First date in milliseconds
+    const START_MIL_SEC = Date.parse(FIRST_DATE);       
+    // 86400000 is the milliseconds of a single day
+    const MIL_SEC_DAY = 86400000;                       
+    /*
+        The slider value ranges from 0 to 315, each of which correspond to a
+        day in the year. The first day is 0, and the last day is 315. To convert
+        between the slider value and the real day, you must multiply the current
+        value by the number of milliseconds in a single day. Then, in order to
+        obtain the true current day you must add the milliseconds of the first
+        day.
+    */
     date = new Date(sliderValue * MIL_SEC_DAY + START_MIL_SEC);
 
 }
 
-
-//-----------End Date Control Slider-----------------
-
-//1581656400000 feb 14th
-//add day 86400000
-
-//Send current date to node.js
+/**
+ * Sends current date to node.js. Makes a query that returns a formatted geoJson
+ * reflecting the data for current date.
+ */
 function sendDate() {
-    console.log("Sending date for new geoJson");
     const dateString = dateStringFromMilli(Date.parse(date));
-        const data = { dateString }
-        const options = { 
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            } ,
-            body: JSON.stringify(data)
-        }
-        fetch(dateURL, options).then(response => {
-            
-            response.json().then(res => {
-                try{
-                    console.log("Successfully converted to geojson.")
-                    //console.log(res);
-                    geoJson = res;
-                    changeMapLayers(res);
-                    if(current_state != 'USA') {
-                        setCurrentState(current_state);     //update the stats box with the same currently selected state, but with new stats for the new date (not working, has to wait for sendState)
-                    }
-                    else {
-                        setCurrentStateUsa();
-                    }
+    /*
+        Date in String format as a JavaScript object; used to create a json that
+        is stringified for querying
+    */
+    const data = { dateString };
+    // Sets the options for the fetch
+    const options = { 
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)  // Converts date json to String for query
+    }
+    /*
+        Fetches from the node server using the date at dateURL. The response is
+        the new geoJson for the map at said date.
+    */
+    fetch(dateURL, options).then(response => {       
+        response.json().then(res => {
+            try {
+                console.log("Successfully converted to geojson.");
+                /*
+                    Updates global geoJson to the geoJson from the result of the
+                    query.
+                */
+                geoJson = res;  
+                changeMapLayers(res);
+                if(current_state != 'USA') {
+                    /*
+                        Update the stats box with the same currently
+                        selected state, but with new stats for the new date.
+                    */
+                    setCurrentState(current_state);     
                 }
-                catch (error) {
-                    console.log("ERROR: failed to convert json")
+                else {
+                    /*
+                        Update the stats box still for USA, but with new stats
+                        for the new date.
+                    */
+                    setCurrentStateUsa();
                 }
-
-            })
-        });
+            }
+            catch (error) {
+                console.log("ERROR: failed to convert json");
+            }
+        })
+    });
 }
 
-//takes a geojson and uses it to reset the map layers.
+/**
+ * Takes a geojson and uses it to set the map layers. The function is used
+ * when date is updated, thus the map must change to reflect the data for this
+ * date.
+ * 
+ * @param   geojson     The geoJson used to update the map's layers
+ */
 function changeMapLayers(geojson) {
-    // console.log(geoJson);
-    
-    mymap.removeLayer(covid); //This is not removing the layer...
-
+    mymap.removeLayer(covid); 
     layerControls.removeLayer(covid);
     covid = L.geoJson(geojson, {style: styleCovid});
-
     layerControls.addBaseLayer(covid, "Covid");
-
-    if(currentLayerID != 3165){  //income is not currently selected, 3165 is income layer's id
+    /*
+        Income layer is not currently selected; 3165 is Income layer's id
+        Note: the Income layer never changes since it is static throughout all
+        dates, so only the Covid layer will need to update if selected.
+    */
+    if(currentLayerID != 3165) {
         mymap.addLayer(covid);
     }
 }
 
+/**
+ * Outlines the currently selected state (if it's not USA) in red.
+ */
 function outlineState() {
     if(stateChanged == true) {
+        // Remove the outline for the previous state since is no longer selected
         removeCurrentOutline();
     }
     stateChanged = false;
     if(current_state != 'USA') {
+        // Represents all counties in the current state
         var geoFeatures = geoJson.features;
         var index = 0;
         var length = geoFeatures.length
-        var counter = 0;    //total counties of current state
+        var counter = 0;    // Represents the total counties of current state
         for (; index < length; index++) {
-            var thisProperty = geoFeatures[index].properties;    //this current county's properties
-            if (thisProperty.STATE_NAME == current_state) {
-                stateGeojsons[counter] = L.geoJson(geoFeatures[index], {style: styleState});    //create a layer from the current county's features and add it to the state's array of layers
+            /* 
+                geoFeatures[index].properties is this current county's
+                properties. Checks that the name of the county's state matches
+                that of the current state.
+            */
+            if (geoFeatures[index].properties.STATE_NAME == current_state) {
+                /*
+                    Creates a layer from the current county and adds it to the
+                    state's array of layers. There is a layer for each county,
+                    which will altogether make up the outline.
+                */
+                stateGeojsons[counter] = L.geoJson(geoFeatures[index], {style: styleState});
                 counter++;
             }
         }
-        //console.log(stateGeojsons.length)
         index = 0;
         for(; index < counter; index++)
         {
-            stateGeojsons[index].addTo(mymap)   //add the layer for each county to the map
-
+            // Add the layer for each county to the map
+            stateGeojsons[index].addTo(mymap)
         }
     } 
 }
 
-//remove the layers for the currently selected state
+/**
+ * Removes the outline of a state. Function is used when the state selected is
+ * changed.
+ */
 function removeCurrentOutline() {
-    if(stateGeojsons.length > 0)
+    var geoLength = stateGeojsons.length;
+    /*
+        A length greater than 0 means a state is selected and has at least 1
+        county to remove an outline for.
+    */
+    if(geoLength > 0)
     {
-        var i = 0;
-        var geoLength = stateGeojsons.length;
-        for(; i < geoLength; i++)
+        for(var i = 0; i < geoLength; i++)
         {
             mymap.removeLayer(stateGeojsons[i]);
         }
