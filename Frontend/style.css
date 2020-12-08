@@ -310,7 +310,7 @@ th, td{
     button{
         margin: 0.1vw;
         margin-bottom: 0.4vh;
-        padding: 0.15em;
+        padding: 0.15em
     }
 
     .btn-pause {
@@ -333,5 +333,10 @@ th, td{
         border: 1px solid black;
         border-radius: 4px;
         width: 26%
+    }
+
+    #mapid {
+        height: 90vh;
+        position: relative;
     }
 }
