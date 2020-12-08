@@ -4,6 +4,13 @@
     list-style-type: none;
 }
 
+header{
+    font-family: 'Arial Narrow','Franklin Gothic Medium', sans-serif;
+    font-size: 18px;
+    text-align: center;
+    background-color: rgba(117, 207, 240, 0.808);
+}
+
 body{
     background: rgb(117, 207, 240, 1);
     color: black;
@@ -88,13 +95,6 @@ button{
 .states li:hover{
     color: white;
     background-color: #a3a3a3;
-}
-
-header{
-    font-family: 'Arial Narrow','Franklin Gothic Medium', sans-serif;
-    font-size: 18px;
-    text-align: center;
-    background-color: rgba(117, 207, 240, 0.808);
 }
 
 .dateText{
@@ -206,6 +206,7 @@ header{
     z-index: 500;
     bottom: 2vh;
     right: 0.5vw;
+    border-radius: 4px;
 }
 
 table{
@@ -249,7 +250,7 @@ th, td{
 
 #income-colors{
     bottom: 0vh;
-    left: 11.4vw;
+    left: 11.5vw;
     position: absolute;
     z-index: 500;
 }
@@ -282,4 +283,55 @@ th, td{
     margin-right:10px;
     border:#bbb solid 1px;
     background-color:#D3D3D3;
+}
+
+@media only screen and (min-width: 1440px){
+    #income-colors{
+        bottom: 0vh;
+        left: 11.5vw;
+        position: absolute;
+        z-index: 500;
+    }
+}
+
+@media only screen and (min-width: 768px){
+    #mapid {
+        height: 90vh;
+        position: relative;
+    }
+
+    #income-colors{
+        bottom: 0vh;
+        left: 17vw;
+        position: absolute;
+        z-index: 500;
+    }
+
+    button{
+        margin: 0.1vw;
+        margin-bottom: 0.4vh;
+        padding: 0.15em
+    }
+
+    .btn-pause {
+        font-family: 'Arial Narrow','Franklin Gothic Medium', sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        background-color:#eeeeee;
+        color: black;
+        border: 1px solid black;
+        border-radius: 4px;
+        width: 26%
+    }
+
+    .btn-stop {
+        font-family: 'Arial Narrow','Franklin Gothic Medium', sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        background-color:#eeeeee;
+        color: black;
+        border: 1px solid black;
+        border-radius: 4px;
+        width: 26%
+    }
 }
