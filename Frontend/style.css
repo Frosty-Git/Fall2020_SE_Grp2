@@ -285,16 +285,16 @@ th, td{
     background-color:#D3D3D3;
 }
 
-@media only screen and (max-width: 700px){
+@media only screen and (min-width: 1200px){
     #income-colors{
         bottom: 0vh;
-        left: 11vw;
+        left: 11.5vw;
         position: absolute;
         z-index: 500;
     }
 }
 
-@media only screen and (max-width: 560px){
+@media only screen and (max-width: 768px){
     #mapid {
         height: 90vh;
         position: relative;
