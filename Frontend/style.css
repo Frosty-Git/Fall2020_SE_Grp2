@@ -285,16 +285,7 @@ th, td{
     background-color:#D3D3D3;
 }
 
-@media only screen and (min-width: 1440px){
-    #income-colors{
-        bottom: 0vh;
-        left: 11.5vw;
-        position: absolute;
-        z-index: 500;
-    }
-}
-
-@media only screen and (min-width: 768px){
+@media only screen and (min-width: 1080px){
     #mapid {
         height: 90vh;
         position: relative;
@@ -302,7 +293,7 @@ th, td{
 
     #income-colors{
         bottom: 0vh;
-        left: 17vw;
+        left: 14.2vw;
         position: absolute;
         z-index: 500;
     }
