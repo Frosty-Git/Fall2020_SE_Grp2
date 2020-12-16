@@ -86,20 +86,14 @@ function pressPause() {
  */
 function pressReset() {
     pressPause();
-    resetDate();
+    // Resets the current day to the first day in the covid data (January 21, 2020).
+    date = FIRST_DATE;
     // Resets zoom back to USA level and removes current state outline
     resetUSA();     
     sendDate();     // Resets map back to initial state of first recorded date
     updateDateText(FIRST_DATE_STRING);
     // Resets the slider bar back to 0.
     slider.value = 0;
-}
-
-/**
- * Resets the current day to the first day in the covid data (January 21, 2020).
- */
-async function resetDate() {
-    date = FIRST_DATE;
 }
 
 /**

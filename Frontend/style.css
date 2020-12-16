@@ -182,7 +182,7 @@ button{
 }
 .btn-pause:hover {
     box-shadow: 0 3px 3px 0 rgba(0,0,0,0.24), 0 3px 3px 0 rgba(0,0,0,0.19);
-    background-color: #ffffcc; /* #a3a3a3 for gray match to States */
+    background-color: #fbfb8a; /* #a3a3a3 for gray match to States */
     color: black
 }
 .btn-stop {
