@@ -102,7 +102,7 @@ function pressReset() {
  */
 function resetUSA() {
     removeCurrentOutline();
-    mymap.setView([39.056882, -98.407468], 5);
+    mymap.setView([39.056882, -98.407468], 4);
     setCurrentStateUsa()
 }
 

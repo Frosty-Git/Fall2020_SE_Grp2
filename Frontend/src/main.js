@@ -17,7 +17,7 @@ const options = {
 mymap = L.map('mapid', {
     maxBounds: L.latLngBounds(L.latLng(73.65, -180.00), L.latLng(10.50, -20.0)),
     zoomControl: false
-}).setView([39.056882, -98.407468], 5);
+}).setView([39.056882, -98.407468], 4);
 
 fetch(dateURL, options).then(response => {
         response.json().then(res => {
